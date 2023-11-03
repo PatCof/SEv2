@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kadwa&family=Langar&family=Lato:wght@100;300&family=REM&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'login/images/logo.png' %}" type="image/png">
+    <title>Wawawi</title>
+    <link rel="stylesheet" href="{% static 'login/css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="left-nav">
+                <div class="logo">
+                    <a href="{% url 'login:main' %}">
+                        <img class="logo" src="{% static 'login/images/logo.png' %}" alt="Wawawi">
+                    </a>
+                </div>
+
+                <ul>
+                    <li><a href="{% url 'login:main' %}#about">ABOUT</a></li>
+                    <li><a href="{% url 'login:main' %}#offers">OFFERS</a></li>
+                    <li><a href="{% url 'login:courses' %}">COURSES</a></li>
+                    {% if user.is_authenticated %}
+                        <li><h2>{{user.username}}</h2></li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="right-nav">
+                <a href="#" class="button" onclick="openLoginPopup()" >Wi-Learn</a>
+            </div>
+        </nav>
+    </header>
+
+    <div id="loginPopup" class="popup">
+        <div class="popup-content">
+            <div class="top">
+            <img src="{% static 'login/images/logo.png' %}" alt="Your Logo">
+            <h2>Wawawi</h2>
+            <span class="close" onclick="closeLoginPopup()">&times;</span>
+             </div>
+
+            <form method="post" action="{% url 'login:main'%}">
+                {% csrf_token %}
+
+                {{ form.email.label_tag }}
+                {{ form.email }}
+
+                {% if form.errors %}
+                    <p>{{ form.errors }}<p>
+                {% endif %}
+                <div class="password-container">
+                    {{ form.password.label_tag }}
+                    {{ form.password }}
+                    <i class="fa-solid fa-eye" id="eye" onclick="togglePasswordVisibility()"></i>
+                </div>
+
+                <input type="hidden" name="text" value="{{ next }}">
+
+                <button type="submit" class="signin-button">Sign In</button>
+            </form>
+            <p class="forgot-password">Forgot Password?</p>
+        </div>
+    </div>
+
+    <div class="rectangle">
+    </div>
+
+    <div class="next1">
+        <p>Learn now with Wawawi, an interactive learning website for students and professors</p>
+        <button>Enroll Now</button>
+    </div>
+
+    {% block content %} {% endblock %}
+    <script src="{% static 'login/js/scripts.js' %}">
+    </script>
+</body>
+</html>

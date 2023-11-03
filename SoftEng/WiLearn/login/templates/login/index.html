@@ -1,0 +1,105 @@
+{% extends 'login/base.html' %}
+{% load static%}
+{% block content %}
+    <div class="rectangle2">
+    </div>
+    
+    <div class="container">
+        <div class="image-slider">
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <img src="{% static 'login/images/image1.jpg' %}">
+                </div>
+                <div class="mySlides fade">
+                    <img src="{% static 'login/images/image2.jpg' %}">
+                </div>
+                <div class="mySlides fade">
+                    <img src="{% static 'login/images/image3.jpg' %}">
+                </div>
+            </div>
+
+            <div class="dot-container">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+        </div>
+
+        
+        <div class="text-content">
+            <h1>Unlocking Knowledge, One Click at a Time</h1>
+            <p class="info">Welcome to Wawawi, your gateway to interactive online learning! Dive into a world of engaging educational experiences that bring subjects to life. Explore, discover, and grow with us as we make learning an exciting adventure.</p>
+            <p class="wants">Want to stay informed about our programs?</p>
+            <input type="text" placeholder="Email">
+            <button class="gts">Subscribe</button>
+        </div>
+    </div>
+
+
+    <main>
+        <section class="offers" id="offers">
+            <div class="offer">
+                <img src="{% static 'login/images/offer.png' %}" alt="Offer 1">
+                <h2>Seamless Access</h2>
+                <p>Enjoy easy and convenient access to our modules anytime, anywhere, making learning fit into your schedule.</p>
+            </div>
+            <div class="offer">
+                <img src="{% static 'login/images/offer.png' %}" alt="Offer 2">
+                <h2>Interactive Learning</h2>
+                <p>Engage with dynamic content that brings subjects to life through interactive lessons, quizzes, and activities.</p>
+            </div>
+            <div class="offer">
+                <img src="{% static 'login/images/offer.png' %}" alt="Offer 3">
+                <h2>Personalized Experience</h2>
+                <p>Tailor your learning journey with customizable modules and progress tracking to meet your unique educational needs.</p>
+            </div>
+            <div class="offer">
+                <img src="{% static 'login/images/offer.png' %}" alt="Offer 4">
+                <h2>Diverse Subjects</h2>
+                <p>Explore a wide range of subjects and topics, ensuring there's something for everyone, from academics to personal development.</p>
+            </div>
+            <div class="offer">
+                <img src="{% static 'login/images/offer.png' %}" alt="Offer 5">
+                <h2>Timely Updates</h2>
+                <p>Stay up-to-date with the latest content and educational trends as we regularly refresh and expand our module library.</p>
+            </div>
+            <div class="offer">
+                <img src="{% static 'login/images/offer.png' %}" alt="Offer 6">
+                <h2>Community Connection</h2>
+                <p>Connect with fellow learners, share insights, and collaborate on projects through our vibrant online learning community.</p>
+            </div>
+        </section>
+    </main>
+
+    <section class="about" id="about">
+        <div class="about-content">
+            <h1>Wawawi, Where Learning Comes to Life!</h1>
+            <p>Welcome to Wawawi, where the world of interactive online learning comes to life. We're more than just an educational platform; we're your partner in the journey of knowledge discovery and personal growth.</p>
+        </div>
+        
+        <div class="missionvision">
+            <div class="mission">
+                <h2>Mission</h2>
+                <p>To revolutionize the way people learn by providing accessible, engaging, and personalized educational experiences. We believe that everyone should have the opportunity to unlock their full potential through lifelong learning. Our commitment is to empower individuals to discover, grow, and thrive in an ever-changing world.</p>
+            </div>
+            <div class="vision">
+                <h2>Vision</h2>
+                <p>To be the global leader in interactive online learning, inspiring a culture of continuous curiosity and personal development. We aspire to create a dynamic platform that fosters innovation, creativity, and collaboration among learners of all ages and backgrounds.</p>
+            </div>
+        </div>
+
+        <div class="join">
+            <h1>Join Us on Your Learning Journey</h1>
+            <p>Whether you're a student seeking to excel in your studies, a professional looking to upskill, or someone eager to explore new horizons, Wawawi is your gateway to a world of knowledge and growth.</p>
+            <button>Enroll Now</button>
+        </div>
+        
+    </section>
+
+    <footer>
+        <p></p>
+    </footer>
+    <div id="back-to-top" class="back-to-top">
+        <a href="#header">↑</a>
+    </div>
+    {% endblock %}

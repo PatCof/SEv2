@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kadwa&family=Lato:wght@100;300&family=REM&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'lms/css/dashboard.css' %}">
+    <link rel="icon" href="{% static 'lms/images/logo.png' %}" type="image/png">
+    <title>Wawawi</title>
+</head>
+<body>
+
+<!-- Side Navigation Bar -->
+<nav class="sidenav">
+    <ul>
+        <li>
+            <a href="{% url 'lms:dashboard' %}">
+                <img class="logo" src="{% static 'lms/images/logo.png' %}" alt="Your Logo">
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'lms:profile' %}">
+                <i class="fa fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'lms:dashboard' %}">
+                <i class="fa fa-tachometer"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-book"></i>
+                <span>Courses</span>
+            </a>
+        </li>
+        <li>
+            <a href="activities.html">
+                <i class="fa fa-calendar"></i>
+                <span>Activities</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'lms:inbox' %}">
+                <i class="fa fa-inbox"></i>
+                <span>Inbox</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<!-- Section Content -->
+<section class="content">
+    <div class="header-container">
+        <h1 class="db">DASHBOARD</h1>
+        {% if user.is_authenticated %}
+            <h2>{{user.username}}</h2>
+        {% endif %}
+        <h1 class="wl">Wi-Learn</h1>
+    </div>
+</section>
+
+<section class="dashboard-content">
+    <div class="button-container">
+        <div class="course-buttons">
+            <button id="activeButton" onclick="toggleCourses('active')">
+                Active Courses
+            </button>
+            <button id="inactiveButton" onclick="toggleCourses('inactive')">
+                Inactive Courses
+            </button>
+        </div>
+        <button id="addCourseButton" class="add-course-button" title="Add Course">+</button>
+    </div>
+    <hr>
+
+<section class="courses-section">
+    <div id="activeCourses" class="courses">
+        <!-- Add your active course content here -->
+        <div class="course-grid">
+            <div class="course">
+                <img src="{% static 'lms/images/offer.png' %}" alt="Course 2">
+                <p class="course-id">Course ID: 67890</p>
+                <p class="course-name">Course Name: Web Development</p>
+                <p>Time</p>
+                <p>date</p>
+            </div>
+
+            {% if course %}
+                {% for c in course %}
+                <div class="course">
+                    <img src="{% get_media_prefix %}{{ c.img }}" alt="Course 2">
+                    <p class="course-id">Course ID: {{ c.course_id }}</p>
+                    <p class="course-name">Course Name: {{ c.name }}</p>
+                    <p>Time</p>
+                    <p>date</p>
+                </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    <div id="inactiveCourses" class="courses">
+        <div class="course-grid">
+            <div class="course">
+                <img src="{% static 'lms/images/offer.png' %}" alt="Course 1">
+                <p class="course-id">Course ID: 12345</p>
+                <p class="course-name">Course Name: Introduction to Programming</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="announcements">
+    <div class="announcement-title">
+        <h2 class="ann">Posted Announcements</h2>
+    </div>
+    <div class="post-announcement-button">
+        <button id="postAnnouncementButton" title="Post Announcements" onclick="navigateToPostAnnouncement()">+</button>
+    </div>
+</section>
+
+<hr>
+
+<section>
+    <div class="announcements-content">
+        <div class="announcement">
+            <h3 class="announcement-title">Announcement 1</h3>
+            <p class="announcement-description">Description for Announcement 1.Description for Announcement 1.Description for Announcement 1.Description for Announcement 1.Description for Announcement 1.Description for Announcement 1.Description for Announcement 1.</p>
+        </div>
+        <div class="announcement">
+            <h3 class="announcement-title">Announcement 2</h3>
+            <p class="announcement-description">Description for Announcement 2.</p>
+        </div>
+        <div class="announcement">
+            <h3 class="announcement-title">Announcement 3</h3>
+            <p class="announcement-description">Description for Announcement 3.</p>
+        </div>
+
+        {% if announcement %}
+            {% for a in announcement %}
+                <div class="announcement">
+                    <h3 class="announcement-title">ANNOUNCEMENT: {{ a.title }}</h3>
+                    <p class="announcement-description">{{ a.text.html| safe }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+    </div>
+</section>
+
+</section>
+<script src="{% static 'lms/js/dashboard.js' %}"></script>
+</body>
+</html>

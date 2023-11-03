@@ -1,0 +1,344 @@
+        body{
+            margin: 0;
+        }
+        /* Style the side navigation bar */
+        .sidenav {
+            height: 100%;
+            width: 70px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #2F293D; /* Background color set to #2F293D */
+            overflow-x: hidden;
+        }
+
+        /* Style the list for navigation items */
+        .sidenav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Style each navigation item */
+        .sidenav li {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 70px; /* Adjust the height as needed */
+        }
+
+        /* Style the links inside the navigation items */
+        .sidenav a {
+            text-decoration: none;
+            color: #ffffff;
+            display: block;
+        }
+
+        /* Style the icons */
+        .sidenav i {
+            font-size: 24px;
+        }
+
+        /* Style the text */
+        .sidenav span {
+            margin-top: 5px; /* Adjust the margin to separate the icon and text */
+            display: none;
+        }
+
+        /* Show text when hovered */
+        .sidenav li:hover span {
+            display: block;
+        }
+
+        /* Style the logo image */
+        .sidenav .logo {
+            width: 24px; /* Set the width to match the icon size */
+            height: 24px; /* Set the height to match the icon size */
+        }
+
+        .content{
+            background-color: #5F62B6;
+            margin-left: 70px; /* Add a margin to move the content to the right of the sidenav */
+            padding: 10px;
+        }
+
+        .dashboard-content{
+            background-color: white;
+            margin-left: 70px; /* Add a margin to move the content to the right of the sidenav */
+            padding: 20px 100px;
+        }
+
+        .course-creation{
+            background-color: white;
+            margin-left: 70px; /* Add a margin to move the content to the right of the sidenav */
+            padding: 20px 100px;
+        }
+
+        .course-creation h1 {
+            font-family: 'Lato', sans-serif;
+        }
+        
+        
+        /* Style the container for the headings */
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /*padding: 10px; Add padding for spacing */
+        }
+
+        /* Style the "Dashboard" heading */
+        h1.db{
+            color: white; /* Text color */
+            font-family: 'Lato', sans-serif; /* Font family */
+            font-size: 25px; /* Font size */
+            margin: 0; /* Remove any default margin */
+        }
+
+        /* Style the "Wi-Learn" heading */
+        h1.wl {
+            color: #FDE5EC; /* Text color */
+            font-family: 'Langar', cursive; /* Font family */
+            font-size: 35px; /* Font size */
+            margin: 0; /* Remove any default margin */
+        }
+
+        /* Style the buttons */
+/* Style the button container */
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+}
+
+/* Style the course buttons */
+.course-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    outline: none;
+    font-family: 'Lato', sans-serif;
+}
+
+/* Style the "+" button */
+.add-course-button {
+    background-color: #5F62B6;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+}
+
+/* Style the course grid container */
+.course-grid {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping to the next line */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+/* Style each course card */
+.course {
+    width: 300px;
+    margin-right: 20px; /* Add space between courses */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.courses-section{
+margin-top: 30px;
+margin-bottom: 30px;
+}
+
+/* Style course images */
+.course img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Style course information */
+.course p {
+    margin: 5px 0;
+}
+
+/* Style the announcements section */
+.announcements {
+    display: flex;
+    align-items: center; /* Vertically center align children */
+    justify-content: space-between; /* Horizontally space out children */
+    padding: 10px; /* Add padding as needed */
+    margin-top: 20px;
+}
+
+/* Style the title */
+.announcement-title h2 {
+    margin: 0; /* Remove default margin for h2 */
+    font-family: 'Lato', sans-serif; /* Font family */
+    font-size: 35px;
+}
+
+/* Style the button */
+.post-announcement-button {
+    background-color: #5F62B6;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+}
+
+
+/* Style the announcements content */
+.announcements-content {
+    margin-top: 10px;
+}
+
+.announcement {
+    cursor: pointer;
+    padding: 30px;
+    border: 1px solid #955FB6;
+    border-radius: 5px;
+    margin: 30px 0;
+
+}
+
+/* Style the announcement titles */
+.announcement h3.announcement-title {
+    margin: 0 0 30px 0;
+    font-size: 30px;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+/* Style the announcement descriptions */
+.announcement p.announcement-description {
+    margin: 0;
+    font-family: 'Kadwa', sans-serif;
+    font-size: 16px;
+}
+
+
+/* Style form elements */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="date"],
+textarea {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="file"] {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+/* Style the course image preview */
+#previewImage {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+    display: none;
+}
+
+/* Create a grid container for the form elements */
+.form-grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 10px; /* Add spacing between rows and columns */
+}
+
+
+/* Adjust form input width within the grid container */
+.form-grid-container input[type="date"],
+.form-grid-container input[type="text"] {
+    width: 90%;
+}
+
+/* Create a container for the buttons and align them to the right */
+.button-containers {
+    text-align: right;
+    margin-top: 20px; /* Add margin from the form elements */
+}
+
+/* Style the Cancel button */
+.cancel-button {
+    background-color: #D9D9D9;
+    color: #333; /* Text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px; /* Add spacing between buttons */
+}
+
+/* Style the Save button */
+.save-button {
+    background-color: #D9D9D9;
+    color: #333; /* Text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px; /* Add spacing between buttons */
+}
+
+/* Style the Publish button */
+.publish-button {
+    background-color: #5F62B6;
+    color: #fff; /* Text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Add some responsive styling */
+@media (max-width: 768px) {
+    .course {
+        width: 100%; /* Full width on smaller screens */
+        margin-right: 0; /* No margin between courses on smaller screens */
+    }
+}
+

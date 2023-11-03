@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kadwa&family=Lato:wght@100;300&family=REM&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'lms/css/edit_profile.css' %}">
+    <link rel="icon" href="{% static 'lms/images/logo.png' %}" type="image/png">
+    <title>Wawawi</title>
+</head>
+<body>
+    <nav class="sidenav">
+        <ul>
+            <li>
+                <a href="{% url 'lms:dashboard' %}">
+                    <img class="logo" src="{% static 'lms/images/logo.png' %}" alt="Your Logo">
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'lms:profile' %}">
+                    <i class="fa fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'lms:dashboard' %}">
+                    <i class="fa fa-tachometer"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-book"></i>
+                    <span>Courses</span>
+                </a>
+            </li>
+            <li>
+                <a href="activities.html">
+                    <i class="fa fa-calendar"></i>
+                    <span>Activities</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'lms:inbox' %}">
+                    <i class="fa fa-inbox"></i>
+                    <span>Inbox</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <section class="content">
+        <div class="header-container">
+            <h1 class="prof">PROFILE</h1>
+            {% if user.is_authenticated %}
+                <h2>{{user.username}}</h2>
+            {% endif %}
+            <h1 class="wl">Wi-Learn</h1>
+        </div>
+    </section>
+
+    <section class="profile-title">
+        <div>
+            <h1 class="pr-name">{{user.last_name}},{{user.first_name}}'s Profile</h1>
+            <hr>
+        </div>
+    </section>
+
+    <section class="profile-content">
+        <form method="post">
+            {% csrf_token %}
+            <div class="profile-box">
+                <div class="profile-image">
+                    <div class="div-image">
+                        <img src="{% static 'lms/images/offer.png'%}">
+                    </div>
+                    <div class="div-image">
+                        INSERT FORM HERE
+                    </div>
+                </div>
+                <div class="profile-data">
+                    <div class="profile">
+                        <h2>Biography</h2>
+                        IINSERT FORM HERE
+                    </div>
+
+                    <div class="profile">
+                        <h2>Contact Details</h2>
+                        INSERT FORM HERE                        
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="profile-button">
+                <button type="submit" id="cancel">Cancel</button>
+                <button type="submit" id="save"><i class="fa fa-regular fa-floppy-disk"></i>  Save</button>
+            </div>
+        </form>
+    </section>
+    <script src="{% static 'lms/js/edit_profile.js' %}"></script>
+</body>
+</html>

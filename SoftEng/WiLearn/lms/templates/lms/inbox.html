@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kadwa&family=Lato:wght@100;300&family=REM&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'lms/css/inbox.css' %}">
+    <link rel="icon" href="{% static 'lms/images/logo.png' %}" type="image/png">
+    <title>Wawawi</title>
+
+</head>
+<body>
+    <!-- Side Navigation Bar -->
+<nav class="sidenav">
+    <ul>
+        <li>
+            <a href="{% url 'lms:dashboard' %}">
+                <img class="logo" src="{% static 'lms/images/logo.png' %}" alt="Your Logo">
+            </a>
+        </li>
+        <li>
+            <a href="profile.html">
+                <i class="fa fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'lms:dashboard' %}">
+                <i class="fa fa-tachometer"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-book"></i>
+                <span>Courses</span>
+            </a>
+        </li>
+        <li>
+            <a href="activities.html">
+                <i class="fa fa-calendar"></i>
+                <span>Activities</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'lms:inbox' %}">
+                <i class="fa fa-inbox"></i>
+                <span>Inbox</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<section class="content">
+    <div class="header-container">
+        <h1 class="db">DASHBOARD</h1>
+        <h1 class="wl">Wi-Learn</h1>
+    </div>
+</section>
+
+<section class="mail-content">
+    <div class="mail-course-container">
+        <div class="dropdown">
+            <input onclick="mailCourseFunction()" type="text" placeholder="Course Search.." id="myInput" onkeyup="filterMailCourseFunction()">
+              <div onclick="mailCourseFunction()" id="myDropdown" class="dropdown-content">
+              <a href="#about">About</a>
+              <a href="#base">Base</a>
+              <a href="#blog">Blog</a>
+              <a href="#contact">Contact</a>
+              <a href="#custom">Custom</a>
+              <a href="#support">Support</a>
+              <a href="#tools">Tools</a>
+            </div>
+          </div> 
+    </div>
+
+    <div class="mail-inbox-container">
+        <div class="dropdown2">
+            <input onclick="myFunction2()" type="text" placeholder="Inbox Search.." id="myInput2" onkeyup="filterFunction2()">
+              <div onclick="myFunction2()" id="myDropdown2" class="dropdown-content">
+              <a href="#about">About</a>
+              <a href="#base">Base</a>
+              <a href="#contact">Contact</a>
+              <a href="#custom">Custom</a>
+              <a href="#support">Support</a>
+              <a href="#tools">Tools</a>
+            </div>
+          </div> 
+    </div>
+</section>
+
+<aside class="message-content">
+    <article class="message-content-wrapper">
+        <div class="message-item">
+            <h2> Date</h2>
+            <h1> Name</h1>
+            <p> Lorem Ipsum</p>
+        </div>
+    </article>
+    <article class="message-content-wrapper">
+        <div class="message-item">
+            <h2> Date</h2>
+            <h1> Name</h1>
+            <p> Lorem Ipsum</p>
+        </div>
+    </article>
+    <article class="message-content-wrapper">
+        <div class="message-item">
+            <h2> Date</h2>
+            <h1> Name</h1>
+            <p> Lorem Ipsum</p>
+        </div>
+    </article>
+    <article class="message-content-wrapper">
+        <div class="message-item">
+            <h2> Date</h2>
+            <h1> Name</h1>
+            <p> Lorem Ipsum</p>
+        </div>
+    </article>
+    <article class="message-content-wrapper">
+        <div class="message-item">
+            <h2> Date</h2>
+            <h1> Name</h1>
+            <p> Lorem Ipsum</p>
+        </div>
+    </article>
+    <article class="message-content-wrapper">
+        <div class="message-item">
+            <h2> Date</h2>
+            <h1> Name</h1>
+            <p> Lorem Ipsum</p>
+        </div>
+    </article>
+    <article class="message-content-wrapper">
+        <div class="message-item">
+            <h2> Date</h2>
+            <h1> Name</h1>
+            <p> Lorem Ipsum</p>
+        </div>
+    </article>
+</aside>
+</body>
+
+<script src="{% static 'lms/js/inbox.js' %}"></script>
+</html>
