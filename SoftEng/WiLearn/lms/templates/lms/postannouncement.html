@@ -71,7 +71,6 @@
     <div class="announcement-form">
         <form method="post">
             {% csrf_token %}
-            <!--{{ form }} -->
             {{form.Announcement_Title.label_tag}}
             {{form.Announcement_Title}}
             {% if form.errors %}

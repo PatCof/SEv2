@@ -28,7 +28,7 @@
                     <li><a href="{% url 'login:main' %}#offers">OFFERS</a></li>
                     <li><a href="{% url 'login:courses' %}">COURSES</a></li>
                     {% if user.is_authenticated %}
-                        <li><h2>{{user.username}}</h2></li>
+                        <li><p>{{user.username}}</p></li>
                     {% endif %}
                 </ul>
             </div>

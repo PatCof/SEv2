@@ -76,6 +76,12 @@ body{
     margin-left: 0;
 }
 
+#hr-form{
+    width: 90%;
+    margin-left: 0;
+}
+
+
 .profile-content{
     margin-left: 90px;
 }
@@ -95,8 +101,8 @@ body{
 }
 
 .profile-image img{
-    height: 140px;
-    width: 140px;
+    height: 160px;
+    width: 160px;
     border-radius: 50%;
 }
 
@@ -144,3 +150,26 @@ h1.wl {
     font-size: 35px;
     margin: 0;
 }
+
+.edit-form{
+    display: none;
+    width:95%;
+}
+
+.def-profile{
+    margin-bottom: 10px;
+}
+
+.div-image{
+    text-align:center;
+    width: 200px;
+}
+
+.img-pf{
+    width: 200px;
+}
+
+.pf{
+    width: 100%;
+}
+

@@ -1,10 +1,8 @@
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib import messages
 from .backends import EmailBackend
 from .forms import LoginForm
-from django.conf import settings
 from django.urls import reverse
 
 
@@ -48,9 +46,8 @@ def courses(request):
         else:
             form = LoginForm()
             messages.error(request, 'Invalid login credentials. Please try again.')
-            return render(request, 'login/index.html', {'form': form})
+            return render(request, 'login/courses.html', {'form': form})
 
     form = LoginForm()
-    return render(request, 'login/index.html', {'form': form})
-
+    return render(request, 'login/courses.html', {'form': form})
 

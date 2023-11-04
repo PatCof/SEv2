@@ -159,6 +159,7 @@ button {
 /* Style each course card */
 .course {
     width: 300px;
+    height: 400px;
     margin-right: 20px; /* Add space between courses */
     padding: 10px;
     border: 1px solid #ccc;
@@ -342,3 +343,20 @@ input[type="file"] {
     }
 }
 
+select {
+    width: 94%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+.course-link,
+.course-img,
+.course-lab,
+.course-lec,
+.course-id,
+.course-name{
+    text-decoration: none;
+    color: black;
+}

@@ -11,6 +11,22 @@ class Announcements(models.Model):
 
 
 class Courses(models.Model):
+    MONDAY = 'Monday'
+    TUESDAY = 'Tuesday'
+    WEDNESDAY = 'Wednesday'
+    THURSDAY = 'Thursday'
+    FRIDAY = 'Friday'
+    SATURDAY = 'Saturday'
+
+    SCHOOL_DAYS = [
+        (MONDAY, 'Monday'),
+        (TUESDAY, 'Tuesday'),
+        (WEDNESDAY, 'Wednesday'),
+        (THURSDAY, 'Thursday'),
+        (FRIDAY, 'Friday'),
+        (SATURDAY,'Saturday'),
+    ]
+
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     course_id = models.CharField(unique=True,max_length=255)
     img = models.ImageField(upload_to='images/')
@@ -21,13 +37,14 @@ class Courses(models.Model):
     course_start = models.DateField()
     course_end = models.DateField()
     lab_time = models.CharField(max_length=255)
-    lab_day = models.CharField(max_length=255)
+    lab_day = models.CharField(max_length=255, choices=SCHOOL_DAYS, default=MONDAY)
     lecture_time = models.CharField(max_length=255)
-    lecture_day = models.CharField(max_length=255)
+    lecture_day = models.CharField(max_length=255, choices=SCHOOL_DAYS, default=MONDAY)
 
 
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    img = models.ImageField(upload_to='images/', null=True)
-    biography = QuillField(blank=True, default='')
-    contacts = QuillField(blank=True, default='')
+    img = models.ImageField(blank=True,upload_to='images/', default='user.png')
+    biography = models.TextField(blank=True, default='')
+    contacts = models.TextField(blank=True, default='')
+

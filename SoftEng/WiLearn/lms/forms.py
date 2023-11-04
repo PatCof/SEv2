@@ -6,7 +6,6 @@ from django_quill.forms import QuillFormField
 class AnnouncementForm(forms.ModelForm):
     Announcement_Title = forms.CharField(widget=forms.TextInput(attrs={'class': 'announce'}))
     Announcement_Content = QuillFormField(widget=forms.TextInput(attrs={'class': 'announce'}))
-    # text = forms.CharField(widget=forms.Textarea(attrs={'id':'quill-editor'}))
 
     class Meta:
         model = Announcements
@@ -50,16 +49,19 @@ class CourseForm(forms.ModelForm):
             "enrollment_end": forms.DateInput(attrs={'id': "enrollmentEndDate",'type': 'date', 'placeholder': 'yyyy-mm-dd (DOB)'}),
             "course_start": forms.DateInput(attrs={'id': "courseStartDate",'type': 'date', 'placeholder': 'yyyy-mm-dd (DOB)'}),
             "course_end": forms.DateInput(attrs={'id': "courseEndDate",'type': 'date', 'placeholder': 'yyyy-mm-dd (DOB)'}),"lab_time": forms.TextInput(attrs={'id': "labTime"}),
-            "lab_day": forms.TextInput(attrs={'id': "labDay"}),
+            # "lab_day": forms.TextInput(attrs={'id': "labDay"}),
+            "lab_day": forms.Select(attrs={'id': "labDay"}),
             "lecture_time": forms.TextInput(attrs={'id': "lectureTime"}),
-            "lecture_day": forms.TextInput(attrs={'id': "lectureDay"}),
+            # "lecture_day": forms.TextInput(attrs={'id': "lectureDay"}),
+            "lecture_day": forms.Select(attrs={'id': "lectureDay"}),
+
         }
 
 
 class ProfileForm(forms.ModelForm):
-    image = forms.ImageField()
-    biography = QuillFormField()
-    contacts = QuillFormField()
+    image = forms.ImageField(required=False, widget=forms.FileInput(attrs={'class': 'img-pf'}))
+    biography = forms.CharField(required=False, widget=forms.Textarea(attrs={'class': 'pf'}))
+    contacts = forms.CharField(required=False, widget=forms.Textarea(attrs={'class': 'pf'}))
 
     class Meta:
         model = Profile

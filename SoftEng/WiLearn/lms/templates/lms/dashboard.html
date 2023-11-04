@@ -58,7 +58,7 @@
     <div class="header-container">
         <h1 class="db">DASHBOARD</h1>
         {% if user.is_authenticated %}
-            <h2>{{user.username}}</h2>
+            <h1>{{user.username}}</h1>
         {% endif %}
         <h1 class="wl">Wi-Learn</h1>
     </div>
@@ -92,13 +92,15 @@
 
             {% if course %}
                 {% for c in course %}
+                <a class="course-link" href="#">
                 <div class="course">
-                    <img src="{% get_media_prefix %}{{ c.img }}" alt="Course 2">
+                    <img  src="{% get_media_prefix %}{{ c.img }}" alt="Course 2">
                     <p class="course-id">Course ID: {{ c.course_id }}</p>
                     <p class="course-name">Course Name: {{ c.name }}</p>
-                    <p>Time</p>
-                    <p>date</p>
+                    <p class="course-lec">Lecture Schedule: {{ c.lecture_day }}: {{ c.lecture_time }}</p>
+                    <p class="course-lab">Lab Schedule: {{ c.lab_day }}: {{ c.lab_time }}</p>
                 </div>
+                </a>
                 {% endfor %}
             {% endif %}
         </div>

@@ -74,7 +74,9 @@
             <div class="profile-box">
                 <div class="profile-image">
                     <div class="div-image">
-                        <img src="{% static 'lms/images/offer.png'%}">
+                       {% if prof %}
+                        <img src="{% get_media_prefix %}images/{{ prof.img }}" alt="Profile Image">
+                        {% endif %}
                     </div>
                     <div class="div-image">
                         INSERT FORM HERE

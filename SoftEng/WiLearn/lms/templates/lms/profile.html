@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     {% load static %}
+    {{ form.media }}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kadwa&family=Lato:wght@100;300&family=REM&display=swap" rel="stylesheet">
@@ -63,37 +64,79 @@
 
     <section class="profile-title">
         <div>
-            <h1 class="pr-name">{{user.last_name}},{{user.first_name}}'s Profile</h1>
+            <h1 class="pr-name">{{user.last_name}}, {{user.first_name}}'s Profile</h1>
             <hr>
         </div>
     </section>
 
-    <section class="profile-content">    
+    <section class="profile-content">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
             <div class="profile-box">
                 <div class="profile-image">
-                    <img src="{% static 'lms/images/offer.png'%}">
+                    <div class="div-image">
+                       {% if prof %}
+                        <img src="{% get_media_prefix %}{{ prof.img }}" alt="Profile Image">
+                        {% endif %}
+                    </div>
+                    <div class="div-image">
+                        {% if form %}
+                        <div class="edit-form">
+                            {{ form.image }}
+                        </div>
+                        {% endif %}
+                    </div>
                 </div>
+
                 <div class="profile-data">
                     <div class="profile">
                         <h2>Biography</h2>
-                        <p>
-                            Proin malesuada arcu elit, id venenatis risus lobortis non. Mauris tempor a leo quis laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus semper euismod enim, vitae sollicitudin justo mattis vitae. Aliquam ut faucibus quam. Donec in facilisis mi. Aenean suscipit congue eros. Mauris accumsan nulla eget neque porta, vel condimentum magna pulvinar. Nunc at mauris pellentesque, maximus dui sed, tincidunt nunc. Quisque placerat molestie quam non iaculis.
-                        </p>
+
+                        {% if prof.biography == "" %}
+                        <div class="def-profile">
+                            <b>{{user.last_name}}, {{user.first_name}}</b> has not added a biography
+                        </div>
+                        {% else %}
+                        <div class="def-profile">
+                            {{ prof.biography }}
+                        </div>
+                        {% endif %}
+
+
+                        {% if form %}
+                            <div class="edit-form">
+                                {{ form.biography }}
+                            </div>
+                        {% endif %}
                     </div>
 
                     <div class="profile">
                         <h2>Contact Details</h2>
-                        <p>
-                            Praesent in imperdiet urna. Fusce posuere ornare augue, et pellentesque justo blandit eget. Donec ornare viverra consequat. In ante erat, tincidunt tristique aliquet ut, auctor nec tortor. Proin facilisis ipsum eu mauris ullamcorper, et lobortis purus mollis. Suspendisse viverra sapien sem, vitae pretium lacus luctus quis. Nunc consequat leo nec sodales finibus.
-                        </p>
+                        {% if prof.contacts == "" %}
+                        <div class="def-profile">
+                            <b>{{user.last_name}}, {{user.first_name}}</b> has not added contacts yet
+                        </div>
+                        {% else %}
+                        <div class="def-profile">
+                            {{ prof.contacts }}
+                        </div>
+                        {% endif %}
+
+                        {% if form %}
+                            <div class="edit-form">
+                                {{ form.contacts }}
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
-        <div class="profile-button">
-            <a href="{% url 'lms:edit_profile'%}">
-                <button type="button"><i class="fa fa-regular fa-pen-to-square"></i> Edit Profile </button>
-            </a>
+            <hr id="hr-form">
+        <div class="profile-button" id="pr-btn">
+                <button type="button" id="edit_btn" class="def-profile" onclick="editProfile()"><i class="fa fa-regular fa-pen-to-square"></i> Edit Profile </button>
+                <button type="button" id="cancel" class="edit-form" onclick="cancelProfile()">Cancel</button>
+                <button type="submit"  class="edit-form"><i class="fa fa-regular fa-floppy-disk"></i>  Save</button>
         </div>
+        </form>
     </section>
     <script src="{% static 'lms/js/profile.js' %}"></script>
 </body>
