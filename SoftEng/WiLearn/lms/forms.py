@@ -69,7 +69,8 @@ class ProfileForm(forms.ModelForm):
 
 class ModuleForm(forms.ModelForm):
     module_title = forms.CharField(widget=forms.TextInput(attrs={'id': 'moduleName', 'class': 'pf'}))
-    module_content = forms.CharField(widget=forms.Textarea(attrs={'id': 'moduleContent', 'class': 'pf'}))
+    # module_content = forms.CharField(widget=forms.Textarea(attrs={'id': 'moduleContent', 'class': 'pf'}))
+    module_content = QuillFormField(widget=forms.Textarea(attrs={'id': 'moduleContent', 'class': 'pf'}))
 
     labels = {
         "module_title": "Module Title",
@@ -79,3 +80,16 @@ class ModuleForm(forms.ModelForm):
     class Meta:
         model = Module
         fields = ['module_title', 'module_content']
+
+
+class EditModule(forms.ModelForm):
+    module_content = QuillFormField(widget=forms.Textarea(attrs={'id': 'content', 'class': 'pf'}))
+
+    labels = {
+        "module_content": "Module Content",
+    }
+
+    class Meta:
+        model = Module
+        exclude = ['module_title']
+        fields = ['module_content']

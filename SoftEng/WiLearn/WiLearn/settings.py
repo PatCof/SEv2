@@ -152,6 +152,6 @@ QUILL_CONFIGS = {
                 ['file']
             ]
         },
-        'placeholder': 'Compose your announcement...',
+        'placeholder': 'Compose the contents...',
     }
 }

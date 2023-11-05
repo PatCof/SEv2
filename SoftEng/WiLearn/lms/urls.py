@@ -11,4 +11,6 @@ urlpatterns = [
   path('profile/', views.profile, name='profile'),
   path('course/<int:id>/', views.inside_module, name='module'),
   path('course/<int:id>/create_module/<int:mod_num>/', views.create_module, name='create_module'),
+  path('course/<int:id>/view_module/<int:mod_num>/<int:mod_page>', views.modify_module, name='modify_module'),
+
 ]

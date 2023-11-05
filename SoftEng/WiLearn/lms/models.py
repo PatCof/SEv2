@@ -44,7 +44,8 @@ class Courses(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    img = models.ImageField(blank=True,upload_to='images/', default='user.png')
+    img = models.ImageField(null=True,blank=True,upload_to='images/')
+    # img = models.ImageField(null=True,blank=True,upload_to='images/', default='user.png')
     biography = models.TextField(blank=True, default='')
     contacts = models.TextField(blank=True, default='')
 
@@ -52,5 +53,9 @@ class Profile(models.Model):
 class Module(models.Model):
     course_id = models.ForeignKey(Courses, on_delete=models.CASCADE)
     module_title = models.TextField()
-    module_content = models.TextField()
+    # module_content = models.TextField()
+    module_content = QuillField()
+
     module_number = models.IntegerField()
+    module_page = models.IntegerField()
+

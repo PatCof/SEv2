@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import AnnouncementForm, CourseForm, ProfileForm, ModuleForm
+from .forms import AnnouncementForm, CourseForm, ProfileForm, ModuleForm, EditModule
 from .models import Announcements, Courses, Profile, Module
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
@@ -155,6 +155,12 @@ def create_module(request, id, mod_num):
         if create_form.is_valid():
             mod = create_form.save(commit=False)
             course = Courses.objects.filter(id=id).first()
+            module = Module.objects.filter(course_id_id=id,module_number=mod_num).last()
+            if module:
+                mod.module_page = module.module_page+1
+            else:
+                mod.module_page = 1
+
             mod.course_id = course
             mod.module_number = mod_num
             mod.save()
@@ -163,7 +169,26 @@ def create_module(request, id, mod_num):
         else:
             print(create_form)
             print(create_form.errors)
-            # put errors here to display in form
+            # put errors here to display in form/ Message framework django :|
     form = ModuleForm()
     return render(request, 'lms/createmodule.html',{'form': form, 'id':id})
 
+
+
+@login_required
+def modify_module(request, id, mod_num, mod_page):
+    course = Courses.objects.filter(id=id).first()
+    mod = Module.objects.filter(module_number=mod_num,course_id_id=id, module_page=mod_page).first()
+    if request.method == 'POST':
+        form = EditModule(request.POST, instance=mod)
+        if form.is_valid():
+            content = form.cleaned_data['module_content']
+            form.module_content = content
+            form.save()
+        context = {'form': form, 'course_name': course.name, 'mod': mod}
+        return render(request, 'lms/modulemodify.html', context=context)
+
+    else:
+        form = EditModule(instance=mod)
+    context = {'form': form,'course_name': course.name, 'mod': mod}
+    return render(request, 'lms/modulemodify.html', context=context)

@@ -85,7 +85,7 @@
             {% if mod1 %}
                 {% for m in mod1 %}
                     <div class="lessoncontent">
-                        <a href="modulecontent.html">Module 1 - {{ m.module_title }}</a>
+                        <a href="{% url 'lms:modify_module' id=id mod_num=1 mod_page=m.module_page%}">Module 1 - {{ m.module_title }}</a>
                     </div>
                 {% endfor %}
             {% endif %}
@@ -102,7 +102,7 @@
             {% if mod2 %}
                 {% for m in mod2 %}
                     <div class="lessoncontent">
-                        <a href="modulecontent.html">Module 2 - {{ m.module_title }}</a>
+                        <a href="{% url 'lms:modify_module' id=id mod_num=2 mod_page=m.module_page%}">Module 2 - {{ m.module_title }}</a>
                     </div>
                 {% endfor %}
             {% endif %}
@@ -110,7 +110,7 @@
 <!--                <a href="modulecontent.html">Module 2 - How to ....</a>-->
 <!--                </div>-->
             <div class="lessoncontent">
-                <a class="addModuleButton" title="Add Course" href="{% url 'lms:create_module' id=id mod_num=2 %}" >+</a>
+                <a class="addModuleButton" title="Add Course" href="{% url 'lms:create_module' id=id mod_num=2%}" >+</a>
                 </div>
         </div>
 
@@ -119,7 +119,7 @@
             {% if mod3 %}
                 {% for m in mod3 %}
                     <div class="lessoncontent">
-                        <a href="modulecontent.html">Module 3 - {{ m.module_title }}</a>
+                        <a href="{% url 'lms:modify_module' id=id mod_num=3 mod_page=m.module_page%}">Module 3 - {{ m.module_title }}</a>
                     </div>
                 {% endfor %}
             {% endif %}
@@ -136,7 +136,7 @@
             {% if mod4 %}
                 {% for m in mod4 %}
                     <div class="lessoncontent">
-                        <a href="modulecontent.html">Module 4 - {{ m.module_title }}</a>
+                        <a href="{% url 'lms:modify_module' id=id mod_num=4 mod_page=m.module_page%}">Module 4 - {{ m.module_title }}</a>
                     </div>
                 {% endfor %}
             {% endif %}
@@ -147,13 +147,12 @@
                 <a class="addModuleButton" title="Add Course" href="{% url 'lms:create_module' id=id mod_num=4%}" >+</a>
                 </div>
         </div>
-
         <button class="collapsible" onclick="toggleCollapsible(5)">Module 5</button>
         <div class="contents">
             {% if mod5 %}
                 {% for m in mod5 %}
                     <div class="lessoncontent">
-                        <a href="modulecontent.html">Module 5 - {{ m.module_title }}</a>
+                        <a href="{% url 'lms:modify_module' id=id mod_num=5 mod_page=m.module_page%}">Module 5 - {{ m.module_title }}</a>
                     </div>
                 {% endfor %}
             {% endif %}
@@ -171,7 +170,7 @@
             {% if mod6 %}
                 {% for m in mod6 %}
                     <div class="lessoncontent">
-                        <a href="modulecontent.html">Module 6 - {{ m.module_title }}</a>
+                        <a href="{% url 'lms:modify_module' id=id mod_num=6 mod_page=m.module_page%}">Module 6 - {{ m.module_title }}</a>
                     </div>
                 {% endfor %}
             {% endif %}

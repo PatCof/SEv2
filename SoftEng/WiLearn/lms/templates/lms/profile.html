@@ -75,8 +75,10 @@
             <div class="profile-box">
                 <div class="profile-image">
                     <div class="div-image">
-                       {% if prof %}
-                        <img src="{% get_media_prefix %}{{ prof.img }}" alt="Profile Image">
+                        {% if prof.img %}
+                            <img src="{% get_media_prefix %}{{ prof.img }}" alt="Profile Image">
+                        {% else %}
+                            <img src="{% static 'lms/images/user.png'%}" alt="Profile Image">
                         {% endif %}
                     </div>
                     <div class="div-image">

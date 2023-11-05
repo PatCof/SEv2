@@ -101,17 +101,21 @@ let isEditable = false;
 function editModule() {
     const moduleTitle = document.getElementById("module-title");
     const editButton = document.getElementById("edit-button");
-    const contentTextarea = document.getElementById("content");
+//    const contentTextarea = document.getElementById("mod_content");
+    const mod_content = document.getElementById("mod_content");
+    const mod_form = document.getElementById("mod_form")
     const nextPageButton = document.querySelector(".next-page-button");
     const editOptions = document.getElementById("edit-options");
 
-    if (!isEditable) {
-        contentTextarea.removeAttribute("readonly");
+    if(!isEditable){
+        mod_content.style.display= 'none';
+        mod_form.style.display= 'block';
         isEditable = true;
         editButton.classList.add("editable");
         editOptions.style.display = "block"; // Show the three buttons
-    } else {
-        contentTextarea.setAttribute("readonly", "readonly");
+    } else{
+        mod_content.style.display = 'block';
+        mod_form.style.display = 'none';
         isEditable = false;
         editButton.classList.remove("editable");
         editOptions.style.display = "none"; // Hide the three buttons
@@ -122,6 +126,21 @@ function editModule() {
     } else {
         nextPageButton.style.display = "none"; // Hide the "Next Page" button
     }
+
+//    if (!isEditable) {
+////        contentTextarea.removeAttribute("readonly");
+////        isEditable = true;
+//
+//        editButton.classList.add("editable");
+//        editOptions.style.display = "block"; // Show the three buttons
+//    } else {
+////        contentTextarea.setAttribute("readonly", "readonly");
+////        isEditable = false;
+//        editButton.classList.remove("editable");
+//        editOptions.style.display = "none"; // Hide the three buttons
+//    }
+
+
 }
 
 function nextPage() {

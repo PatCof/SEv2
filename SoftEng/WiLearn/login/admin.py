@@ -6,9 +6,9 @@ from .models import Teachers
 
 class TeachersAdmin(UserAdmin):
     ordering = ('username', 'first_name', 'last_name', 'email', 'password')
-    list_display = ['username', 'email', 'first_name', 'last_name', ]
+    list_display = ['username', 'email', 'first_name', 'last_name', 'department']
     fieldsets = (
-        ("Teacher's Information", {'fields': ('first_name', 'last_name', 'username', 'email')}),
+        ("Teacher's Information", {'fields': ('first_name', 'last_name', 'username', 'email', 'department')}),
          )
 
 
