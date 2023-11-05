@@ -1,0 +1,217 @@
+body{
+    margin: 0;
+}
+/* Style the side navigation bar */
+.sidenav {
+    height: 100%;
+    width: 70px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #2F293D; /* Background color set to #2F293D */
+    overflow-x: hidden;
+}
+
+/* Style the list for navigation items */
+.sidenav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Style each navigation item */
+.sidenav li {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70px; /* Adjust the height as needed */
+}
+
+/* Style the links inside the navigation items */
+.sidenav a {
+    text-decoration: none;
+    color: #ffffff;
+    display: block;
+}
+
+/* Style the icons */
+.sidenav i {
+    font-size: 24px;
+}
+
+/* Style the text */
+.sidenav span {
+    margin-top: 5px; /* Adjust the margin to separate the icon and text */
+    display: none;
+}
+
+/* Show text when hovered */
+.sidenav li:hover span {
+    display: block;
+}
+
+/* Style the logo image */
+.sidenav .logo {
+    width: 24px; /* Set the width to match the icon size */
+    height: 24px; /* Set the height to match the icon size */
+}
+
+.content{
+    background-color: #5F62B6;
+    margin-left: 70px; /* Add a margin to move the content to the right of the sidenav */
+    padding: 10px;
+}
+
+.dashboard-content{
+    background-color: white;
+    margin-left: 70px; /* Add a margin to move the content to the right of the sidenav */
+    padding: 20px 100px;
+}
+
+.course-creation{
+    background-color: white;
+    margin-left: 70px; /* Add a margin to move the content to the right of the sidenav */
+    padding: 20px 100px;
+}
+
+.course-creation h1 {
+    font-family: 'Lato', sans-serif;
+}
+
+.collapsible {
+    background-color: #f1f1f1;
+    color: #333;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: 1px solid #cac8c8;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    transition: 0.4s;
+    display: flex;
+    margin: 25px 0 0 0;
+    align-items: center; /* Vertically center the button within the header */
+  }
+  
+  .lessoncontent {
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    padding: 18px;
+    border: 1px solid #cac8c8;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    transition: 0.4s;
+    display: flex;
+    align-items: center; /* Vertically center the button within the header */
+  }
+  
+  .addModuleButton{
+color: black;
+  }
+  
+
+  .contents {
+    display: none;
+    overflow: hidden;
+    background-color: #fff;
+  }
+
+  .collapsible.active {
+    background-color: #ddd;
+  }
+
+/* Style the container for the headings */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*padding: 10px; Add padding for spacing */
+}
+
+/* Style the "Dashboard" heading */
+h1.db{
+    color: white; /* Text color */
+    font-family: 'Lato', sans-serif; /* Font family */
+    font-size: 25px; /* Font size */
+    margin: 0; /* Remove any default margin */
+}
+
+/* Style the "Wi-Learn" heading */
+h1.wl {
+    color: #FDE5EC; /* Text color */
+    font-family: 'Langar', cursive; /* Font family */
+    font-size: 35px; /* Font size */
+    margin: 0; /* Remove any default margin */
+}
+
+.dashboard-content{
+    background-color: white;
+    margin-left: 70px; /* Add a margin to move the content to the right of the sidenav */
+    padding: 20px 100px;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+}
+
+/* Style the course buttons */
+.course-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    color: black;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    outline: none;
+    font-family: 'Lato', sans-serif;
+}
+
+button:not(.active) {
+    font-size: 20px; /* Adjust the font size as needed */
+}
+
+/* Style the "+" button */
+.add-course-button {
+    background-color: #5F62B6;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+}
+
+.addModuleButton {
+    background-color: transparent;
+    border: none;
+    color: black;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    outline: none;
+    font-family: 'Lato', sans-serif;
+    text-decoration: none;
+}
+
+.addModuleButton:not(.active) {
+    font-size: 20px; /* Adjust the font size as needed */
+}

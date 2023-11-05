@@ -6,8 +6,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kadwa&family=Langar&family=Lato:wght@100;300&family=REM&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="{% static 'lms/css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'lms/css/inside_module.css' %}">
     <link rel="icon" href="{% static 'lms/images/logo.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'lms/css/dashboard.css' %}">
     <title>Wawawi</title>
 </head>
 <body>
@@ -56,74 +57,44 @@
 <!-- Section Content -->
 <section class="content">
     <div class="header-container">
-        <h1 class="db">DASHBOARD</h1>
+        <h1 class="db">Course Title</h1>
         <h1 class="wl">Wi-Learn</h1>
     </div>
 </section>
 
 <section class="course-creation">
-    <h1>Create Course</h1>
-    <hr>
+<form method="post">
+    {% csrf_token %}
+    {% if form %}
+    <div class="form-group">
+        {{ form.module_title.label_tag }}
+        {{ form.module_title }}
+<!--        <label for="moduleName">Module Title:</label>-->
+<!--        <input type="text" id="moduleName" name="moduleName" required>-->
+    </div>
+    <div class="form-group">
+        {{ form.module_content.label_tag }}
+        {{ form.module_content }}
+<!--        <label for="moduleContent">Module Content:</label>-->
+<!--        <textarea id="moduleContent" name="moduleContent" required></textarea>-->
+    </div>
+    {% endif %}
 
-    <form id="courseCreationForm" method="post" enctype="multipart/form-data">
-        {%csrf_token%}
-        <div class="form-group">
-            {{ form.img.label_tag }}
-            {{ form.img }}
-        </div>
-        <div class="form-group">
-            {{ form.name.label_tag }}
-            {{ form.name }}
-        </div>
-        <div class="form-group">
-            {{ form.desc.label_tag }}
-            {{ form.desc }}
-        </div>
 
-        <div class="form-grid-container">
-            <div class="form-group">
-                {{ form.enrollment_start.label_tag }}
-                {{ form.enrollment_start }}
-            </div>
-            <div class="form-group">
-                {{ form.enrollment_end.label_tag }}
-                {{ form.enrollment_end }}
-            </div>
-            <div class="form-group">
-                {{ form.course_start.label_tag }}
-                {{ form.course_start }}
-            </div>
-            <div class="form-group">
-                {{ form.course_end.label_tag }}
-                {{ form.course_end }}
-            </div>
-            <div class="form-group">
-                {{ form.lab_time.label_tag }}
-                {{ form.lab_time }}
-            </div>
-            <div class="form-group">
-                {{ form.lab_day.label_tag }}
-                {{ form.lab_day }}
-            </div>
+<hr>
 
-            <div class="form-group">
-                {{ form.lecture_time.label_tag }}
-                {{ form.lecture_time }}
-            </div>
-            <div class="form-group">
-                {{ form.lecture_day.label_tag }}
-                {{ form.lecture_day }}
-            </div>
-        </div>
-    <hr>
     <div class="button-containers">
+<!--        <button class="cancel-button" onclick="{% url 'lms:module' id=id %}">Cancel</button>-->
         <button class="cancel-button" onclick="discardCourse()">Cancel</button>
 <!--        <button class="save-button">Save</button>-->
-        <button class="publish-button">Publish</button>
+        <button type="submit" class="publish-button">Publish</button>
     </div>
-    </form>
+
+</form>
 </section>
 
-<script src="{% static 'lms/js/dashboard.js' %}"></script>
+<script src="{% static 'lms/js/insidemodule.js' %}">
+
+</script>
 </body>
 </html>

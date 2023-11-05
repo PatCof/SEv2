@@ -1,5 +1,5 @@
 from django import forms
-from .models import Announcements, Courses, Profile
+from .models import Announcements, Courses, Profile, Module
 from django_quill.forms import QuillFormField
 
 
@@ -11,6 +11,7 @@ class AnnouncementForm(forms.ModelForm):
         model = Announcements
         fields = ['Announcement_Title', 'Announcement_Content']
         labels = {"Announcement_Title": "Announcement Title", "Announcement_Content": "Announcement Content"}
+
 
 class CourseForm(forms.ModelForm):
     class Meta:
@@ -49,10 +50,8 @@ class CourseForm(forms.ModelForm):
             "enrollment_end": forms.DateInput(attrs={'id': "enrollmentEndDate",'type': 'date', 'placeholder': 'yyyy-mm-dd (DOB)'}),
             "course_start": forms.DateInput(attrs={'id': "courseStartDate",'type': 'date', 'placeholder': 'yyyy-mm-dd (DOB)'}),
             "course_end": forms.DateInput(attrs={'id': "courseEndDate",'type': 'date', 'placeholder': 'yyyy-mm-dd (DOB)'}),"lab_time": forms.TextInput(attrs={'id': "labTime"}),
-            # "lab_day": forms.TextInput(attrs={'id': "labDay"}),
             "lab_day": forms.Select(attrs={'id': "labDay"}),
             "lecture_time": forms.TextInput(attrs={'id': "lectureTime"}),
-            # "lecture_day": forms.TextInput(attrs={'id': "lectureDay"}),
             "lecture_day": forms.Select(attrs={'id': "lectureDay"}),
 
         }
@@ -67,3 +66,16 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = ['image', 'biography', 'contacts']
 
+
+class ModuleForm(forms.ModelForm):
+    module_title = forms.CharField(widget=forms.TextInput(attrs={'id': 'moduleName', 'class': 'pf'}))
+    module_content = forms.CharField(widget=forms.Textarea(attrs={'id': 'moduleContent', 'class': 'pf'}))
+
+    labels = {
+        "module_title": "Module Title",
+        "module_content": "Module Content",
+    }
+
+    class Meta:
+        model = Module
+        fields = ['module_title', 'module_content']

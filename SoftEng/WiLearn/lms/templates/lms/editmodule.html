@@ -56,74 +56,31 @@
 <!-- Section Content -->
 <section class="content">
     <div class="header-container">
-        <h1 class="db">DASHBOARD</h1>
+        <h1 class="db">Course Title</h1>
         <h1 class="wl">Wi-Learn</h1>
     </div>
 </section>
 
-<section class="course-creation">
-    <h1>Create Course</h1>
-    <hr>
-
-    <form id="courseCreationForm" method="post" enctype="multipart/form-data">
-        {%csrf_token%}
+<section class="dashboard-content">
+    <form id="dashboard-form">
         <div class="form-group">
-            {{ form.img.label_tag }}
-            {{ form.img }}
+            <label for="module">MODULE:</label>
+            <input type="text" id="module" name="module" placeholder="Enter module name" required>
         </div>
         <div class="form-group">
-            {{ form.name.label_tag }}
-            {{ form.name }}
+            <label for="content">CONTENT:</label>
+            <textarea id="content" name="content" rows="6" placeholder="Enter content here" required></textarea>
         </div>
-        <div class="form-group">
-            {{ form.desc.label_tag }}
-            {{ form.desc }}
+        <div class="button-containers">
+            <button class="cancel-button" onclick="discardCourse()">Cancel</button>
+            <button class="save-button">Save</button>
+            <button class="publish-button">Publish</button>
         </div>
-
-        <div class="form-grid-container">
-            <div class="form-group">
-                {{ form.enrollment_start.label_tag }}
-                {{ form.enrollment_start }}
-            </div>
-            <div class="form-group">
-                {{ form.enrollment_end.label_tag }}
-                {{ form.enrollment_end }}
-            </div>
-            <div class="form-group">
-                {{ form.course_start.label_tag }}
-                {{ form.course_start }}
-            </div>
-            <div class="form-group">
-                {{ form.course_end.label_tag }}
-                {{ form.course_end }}
-            </div>
-            <div class="form-group">
-                {{ form.lab_time.label_tag }}
-                {{ form.lab_time }}
-            </div>
-            <div class="form-group">
-                {{ form.lab_day.label_tag }}
-                {{ form.lab_day }}
-            </div>
-
-            <div class="form-group">
-                {{ form.lecture_time.label_tag }}
-                {{ form.lecture_time }}
-            </div>
-            <div class="form-group">
-                {{ form.lecture_day.label_tag }}
-                {{ form.lecture_day }}
-            </div>
-        </div>
-    <hr>
-    <div class="button-containers">
-        <button class="cancel-button" onclick="discardCourse()">Cancel</button>
-<!--        <button class="save-button">Save</button>-->
-        <button class="publish-button">Publish</button>
-    </div>
     </form>
 </section>
 
-<script src="{% static 'lms/js/dashboard.js' %}"></script>
+<script src="{% static 'lms/js/dashboard.js' %}">
+
+</script>
 </body>
 </html>

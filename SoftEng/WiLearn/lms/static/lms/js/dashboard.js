@@ -95,5 +95,39 @@ function navigateToPostAnnouncement() {
     window.location.href = "create_announcement/";
 }
 
+
+let isEditable = false;
+
+function editModule() {
+    const moduleTitle = document.getElementById("module-title");
+    const editButton = document.getElementById("edit-button");
+    const contentTextarea = document.getElementById("content");
+    const nextPageButton = document.querySelector(".next-page-button");
+    const editOptions = document.getElementById("edit-options");
+
+    if (!isEditable) {
+        contentTextarea.removeAttribute("readonly");
+        isEditable = true;
+        editButton.classList.add("editable");
+        editOptions.style.display = "block"; // Show the three buttons
+    } else {
+        contentTextarea.setAttribute("readonly", "readonly");
+        isEditable = false;
+        editButton.classList.remove("editable");
+        editOptions.style.display = "none"; // Hide the three buttons
+    }
+
+    if (editOptions.style.display === "none") {
+        nextPageButton.style.display = "block"; // Show the "Next Page" button
+    } else {
+        nextPageButton.style.display = "none"; // Hide the "Next Page" button
+    }
+}
+
+function nextPage() {
+    // Add your code for navigating to the next page here.
+}
+
+
 // Initial state
 toggleCourses('active'); // Set 'Active Courses' as the default

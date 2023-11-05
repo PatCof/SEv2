@@ -48,3 +48,9 @@ class Profile(models.Model):
     biography = models.TextField(blank=True, default='')
     contacts = models.TextField(blank=True, default='')
 
+
+class Module(models.Model):
+    course_id = models.ForeignKey(Courses, on_delete=models.CASCADE)
+    module_title = models.TextField()
+    module_content = models.TextField()
+    module_number = models.IntegerField()

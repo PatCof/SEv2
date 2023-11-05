@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
-from .forms import AnnouncementForm, CourseForm, ProfileForm
-from .models import Announcements, Courses, Profile
+from .forms import AnnouncementForm, CourseForm, ProfileForm, ModuleForm
+from .models import Announcements, Courses, Profile, Module
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
+from django.urls import reverse
+
 from PIL import Image
 
 # Create your views here.
@@ -123,6 +125,45 @@ def profile(request):
 
 @login_required
 def inside_module(request, id):
-    print(id)
-    return render(request, 'lms/inside_module.html')
+    module = Module.objects.filter(course_id_id=id)
+    m1, m2, m3, m4, m5, m6 = None, None, None, None, None, None,
+    if module:
+        m1 = [m for m in module if m.module_number == 1]
+        m2 = [m for m in module if m.module_number == 2]
+        m3 = [m for m in module if m.module_number == 3]
+        m4 = [m for m in module if m.module_number == 4]
+        m5 = [m for m in module if m.module_number == 5]
+        m6 = [m for m in module if m.module_number == 6]
+
+    context={
+        'id': id,
+        'mod1': m1,
+        'mod2': m2,
+        'mod3': m3,
+        'mod4': m4,
+        'mod5': m5,
+        'mod6': m6,
+    }
+
+    return render(request, 'lms/inside_module.html', context=context)
+
+
+@login_required
+def create_module(request, id, mod_num):
+    if request.method == 'POST':
+        create_form = ModuleForm(request.POST)
+        if create_form.is_valid():
+            mod = create_form.save(commit=False)
+            course = Courses.objects.filter(id=id).first()
+            mod.course_id = course
+            mod.module_number = mod_num
+            mod.save()
+
+            return redirect(reverse('lms:module',kwargs={'id': id}))
+        else:
+            print(create_form)
+            print(create_form.errors)
+            # put errors here to display in form
+    form = ModuleForm()
+    return render(request, 'lms/createmodule.html',{'form': form, 'id':id})
 
