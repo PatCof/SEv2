@@ -82,14 +82,7 @@
     <div id="activeCourses" class="courses">
         <!-- Add your active course content here -->
         <div class="course-grid">
-            <div class="course">
-                <img src="{% static 'lms/images/offer.png' %}" alt="Course 2">
-                <p class="course-id">Course ID: 67890</p>
-                <p class="course-name">Course Name: Web Development</p>
-                <p>Time</p>
-                <p>date</p>
-            </div>
-
+    
             {% if course %}
                 {% for c in course %}
                 <a class="course-link" href="{% url 'lms:module' id=c.id %} ">
@@ -130,19 +123,6 @@
 
 <section>
     <div class="announcements-content">
-        <div class="announcement">
-            <h3 class="announcement-title">Announcement 1</h3>
-            <p class="announcement-description">Description for Announcement 1.Description for Announcement 1.Description for Announcement 1.Description for Announcement 1.Description for Announcement 1.Description for Announcement 1.Description for Announcement 1.</p>
-        </div>
-        <div class="announcement">
-            <h3 class="announcement-title">Announcement 2</h3>
-            <p class="announcement-description">Description for Announcement 2.</p>
-        </div>
-        <div class="announcement">
-            <h3 class="announcement-title">Announcement 3</h3>
-            <p class="announcement-description">Description for Announcement 3.</p>
-        </div>
-
         {% if announcement %}
             {% for a in announcement %}
                 <div class="announcement">
