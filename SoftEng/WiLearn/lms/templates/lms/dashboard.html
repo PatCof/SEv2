@@ -92,7 +92,7 @@
 
             {% if course %}
                 {% for c in course %}
-                <a class="course-link" href="#">
+                <a class="course-link" href="{% url 'lms:module' id=c.id %} ">
                 <div class="course">
                     <img  src="{% get_media_prefix %}{{ c.img }}" alt="Course 2">
                     <p class="course-id">Course ID: {{ c.course_id }}</p>

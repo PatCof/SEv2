@@ -122,6 +122,7 @@ def profile(request):
 
 
 @login_required
-def inside_module(request):
+def inside_module(request, id):
+    print(id)
     return render(request, 'lms/inside_module.html')
 
