@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kadwa&family=Langar&family=Lato:wght@100;300&family=REM&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="insidemodule.css">
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="stylesheet" href="dashboard.css">
+    <title>Wawawi</title>
+</head>
+<body>
+
+<!-- Side Navigation Bar -->
+<nav class="sidenav">
+    <ul>
+        <li>
+            <a href="dashboard.html">
+                <img class="logo" src="logo.png" alt="Your Logo">
+            </a>
+        </li>
+        <li>
+            <a href="profile.html">
+                <i class="fa fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </li>
+        <li>
+            <a href="dashboard.html">
+                <i class="fa fa-tachometer"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-book"></i>
+                <span>modules</span>
+            </a>
+        </li>
+        <li>
+            <a href="activities.html">
+                <i class="fa fa-calendar"></i>
+                <span>Activities</span>
+            </a>
+        </li>
+        <li>
+            <a href="inbox.html">
+                <i class="fa fa-inbox"></i>
+                <span>Inbox</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<!-- Section Content -->
+<section class="content">
+    <div class="header-container">
+        <h1 class="db">Course Title</h1>
+        <h1 class="wl">Wi-Learn</h1>
+    </div>
+</section>
+
+<section class="course-creation">
+
+    <div class="form-group">
+        <label for="moduleName">Module Title:</label>
+        <input type="text" id="moduleName" name="moduleName" required>
+    </div>
+    <div class="form-group">
+        <label for="moduleContent">Module Content:</label>
+        <textarea id="moduleContent" name="moduleContent" required></textarea>
+    </div>
+</form>
+
+<hr>
+
+    <div class="button-containers">
+        <button class="cancel-button" onclick="discardCourse()">Cancel</button>
+        <button class="save-button">Save</button>
+        <button class="publish-button">Publish</button>
+    </div>
+</section>
+
+<script src="insidemodule.js">
+
+</script>
+</body>
+</html>
