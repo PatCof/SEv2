@@ -48,7 +48,13 @@
 
             <form method="post" action="{% url 'login:main'%}">
                 {% csrf_token %}
-
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                    {% endfor %}
+                </ul>
+                {% endif %}
                 {{ form.email.label_tag }}
                 {{ form.email }}
                 {% if form.errors %}

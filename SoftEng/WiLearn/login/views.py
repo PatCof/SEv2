@@ -23,10 +23,12 @@ def main(request):
                 login(request, user=user, backend='login.backends.EmailBackend')
                 print(request.user.is_authenticated)
                 return redirect(next_param)
+            else:
+                # messages.error(request, messages.ERROR,'User does not Exist!')
+                messages.error(request,'User does not Exist!')
+                return render(request, 'login/index.html', {'form': form})
 
-        else:
-            return render(request, 'login/index.html', {'form': form})
-            # CONCERN: SINCE POPUP NOT SURE PAANO IPAPAKITA NA MAY ERROR SA FORMS
+     # CONCERN: SINCE POPUP NOT SURE PAANO IPAPAKITA NA MAY ERROR SA FORMS// FIX THE PROPER FORMS
     else:
         form = LoginForm()
         return render(request, 'login/index.html', {'form': form})

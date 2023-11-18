@@ -3,7 +3,17 @@ const default_profile = document.querySelectorAll(".def-profile");
 const edit = document.getElementById("edit_btn");
 const prof_btn = document.getElementById("pr-btn");
 
+
 function editProfile(){
+    const bio_form = document.getElementById("id_biography");
+    const contact_form = document.getElementById("id_contacts");
+
+    const hidden_bio = document.getElementById("hidden_bio");
+    const hidden_contacts = document.getElementById("hidden_contacts");
+
+    contact_form.value = hidden_contacts.textContent;
+    bio_form.value = hidden_bio.textContent;
+
     edit_form.forEach(edit_prof => {
         edit_prof.style.display = "inline-block";
     });
@@ -14,10 +24,14 @@ function editProfile(){
 }
 
 function cancelProfile(){
-//    var bio = document.getElementsByClassName("ql-editor");
-//
-//    bio[0].innerHTML = "";
-//    bio[1].innerHTML = "";
+    const bio_form = document.getElementById("id_biography");
+    const contact_form = document.getElementById("id_contacts");
+
+    const hidden_bio = document.getElementById("hidden_bio");
+    const hidden_contacts = document.getElementById("hidden_contacts");
+
+    bio_form.value = hidden_bio.textContent;
+    contact_form.value = hidden_contacts.textContent;
 
     edit_form.forEach(edit_prof => {
         edit_prof.style.display = "none";
@@ -28,6 +42,8 @@ function cancelProfile(){
     });
 
     edit.style.display= "inline-block";
+
+
 }
 
 

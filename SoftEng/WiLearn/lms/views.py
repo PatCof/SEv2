@@ -117,6 +117,8 @@ def profile(request):
 
             prof.save()
 
+        return render(request, 'lms/profile.html', {'form': form, 'prof': prof})
+
     else:
         form = ProfileForm(instance=prof)
 

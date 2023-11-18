@@ -108,6 +108,8 @@
                         {% if form %}
                             <div class="edit-form">
                                 {{ form.biography }}
+                                <textarea hidden id="hidden_bio">{{ prof.biography }}</textarea>
+
                             </div>
                         {% endif %}
                     </div>
@@ -127,6 +129,7 @@
                         {% if form %}
                             <div class="edit-form">
                                 {{ form.contacts }}
+                                <textarea hidden id="hidden_contacts">{{ prof.contacts }}</textarea>
                             </div>
                         {% endif %}
                     </div>
