@@ -375,4 +375,22 @@ select {
     width: 98%;
 }
 
+.editbtn{
+    margin-bottom: 5px;
+    display: flex;
+    justify-content:    right;
+    text-decoration: none;
+}
+
+
+.div_btn{
+    background-color: #5F62B6;
+    padding: 5px;
+    width: 60px;
+    height: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+}
+
 

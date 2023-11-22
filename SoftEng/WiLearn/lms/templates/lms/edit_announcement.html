@@ -67,24 +67,26 @@
 </section>
 
 <section class="announcement-creation">
-    <h2>Create Announcement</h2>
+    <h2>Edit Announcement</h2>
     <div class="announcement-form">
         <form method="post">
             {% csrf_token %}
-            {{form.title.label_tag}}
-            {{form.title}}
-            {% if form.errors %}
-                {{ form.errors.title }}
-            {% endif %}
+            {% if form %}
+                {{form.title.label_tag}}
+                {{form.title}}
+                {% if form.errors %}
+                    {{ form.errors.title }}
+                {% endif %}
 
-            {{form.text.label_tag}}
-            {{form.text}}
-            {% if form.errors %}
-                {{ form.errors.text }}
+                {{form.text.label_tag}}
+                {{form.text}}
+                {% if form.errors %}
+                    {{ form.errors.text }}
+                {% endif %}
             {% endif %}
         <hr>
-        <button class="cancel-button" onclick="cancelAnnouncement()">Cancel</button>
-        <button type="submit" class="publish-button">Publish</button>
+        <button class="cancel-button" onclick="cancelEdit()">Cancel</button>
+        <button type="submit" class="publish-button"><i class="fa fa-regular fa-floppy-disk"></i> Save</button>
         <!--        <button type="submit" class="publish-button" onclick="publishAnnouncement()">Publish</button> -->
         </form>
     </div>

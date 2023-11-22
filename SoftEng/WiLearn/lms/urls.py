@@ -8,6 +8,7 @@ urlpatterns = [
   path('inbox/', views.inbox, name='inbox'),
   path('add_course/', views.add_course, name='add_course'),
   path('create_announcement/', views.post_announcements, name='create_announcements'),
+  path('edit_announcement/<int:a_id>', views.edit_announcements, name='edit_announcements'),
   path('profile/', views.profile, name='profile'),
   path('course/<int:id>/', views.inside_module, name='module'),
   path('course/<int:id>/create_module/<int:mod_num>/', views.create_module, name='create_module'),

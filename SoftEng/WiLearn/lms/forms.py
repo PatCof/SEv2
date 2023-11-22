@@ -4,13 +4,16 @@ from django_quill.forms import QuillFormField
 
 
 class AnnouncementForm(forms.ModelForm):
-    Announcement_Title = forms.CharField(widget=forms.TextInput(attrs={'class': 'announce'}))
-    Announcement_Content = QuillFormField(widget=forms.TextInput(attrs={'class': 'announce'}))
+    title = forms.CharField(widget=forms.TextInput(attrs={'class': 'announce'}))
+    text = QuillFormField(widget=forms.TextInput(attrs={'class': 'announce'}))
 
     class Meta:
         model = Announcements
-        fields = ['Announcement_Title', 'Announcement_Content']
-        labels = {"Announcement_Title": "Announcement Title", "Announcement_Content": "Announcement Content"}
+        fields = ['title', 'text']
+        labels = {"title": "Announcement Title", "text": "Announcement Content"}
+
+
+
 
 
 class CourseForm(forms.ModelForm):

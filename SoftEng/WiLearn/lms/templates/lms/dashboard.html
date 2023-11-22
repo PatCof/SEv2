@@ -128,6 +128,11 @@
                 <div class="announcement">
                     <h3 class="announcement-title">ANNOUNCEMENT: {{ a.title }}</h3>
                     <p class="announcement-description">{{ a.text.html| safe }}</p>
+                    <a href="{% url 'lms:edit_announcements' a_id=a.id %}" class="editbtn">
+                        <div class="div_btn">
+                        <i class="fa fa-regular fa-pen-to-square"></i>  Edit
+                        </div>
+                    </a>
                 </div>
             {% endfor %}
         {% endif %}

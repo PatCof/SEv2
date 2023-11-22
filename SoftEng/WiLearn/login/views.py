@@ -53,3 +53,4 @@ def courses(request):
     form = LoginForm()
     return render(request, 'login/courses.html', {'form': form})
 
+

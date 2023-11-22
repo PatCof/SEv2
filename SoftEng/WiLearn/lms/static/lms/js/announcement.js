@@ -42,3 +42,11 @@ function cancelAnnouncement() {
         window.location.href = "../";
     }
 }
+
+function cancelEdit(){
+ var confirmation = confirm("Cancel Editing?");
+    if (confirmation) {
+        // Redirect to dashboard.html
+        window.location.href = "../";
+    }
+}

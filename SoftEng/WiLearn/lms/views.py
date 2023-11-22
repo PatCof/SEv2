@@ -34,8 +34,8 @@ def post_announcements(request):
             teacher = User.objects.get(email=user.email)
             announcement = announcement_form.save(commit=False)
 
-            title = announcement_form.cleaned_data['Announcement_Title']
-            text = announcement_form.cleaned_data['Announcement_Content']
+            title = announcement_form.cleaned_data['title']
+            text = announcement_form.cleaned_data['text']
             announcement.title = title
             announcement.text = text
             announcement.user = teacher
@@ -48,6 +48,31 @@ def post_announcements(request):
 
     form = AnnouncementForm()
     return render(request, 'lms/postannouncement.html', {'form': form})
+
+
+
+@login_required
+def edit_announcements(request, a_id):
+    announce = Announcements.objects.filter(id=a_id).first()
+    if request.method == 'POST':
+        form = AnnouncementForm(request.POST, instance=announce)
+        if form.is_valid():
+            text = form.cleaned_data['text']
+            form.text = text
+            form.save()
+            return redirect('lms:dashboard')
+        else:
+            return render(request, 'lms/edit_announcement.html', {'form': form})
+    form = AnnouncementForm(instance=announce)
+    return render(request, 'lms/edit_announcement.html', {'form': form})
+
+@login_required
+def delete_announcements(request, a_id):
+    announce = Announcements.objects.filter(id=a_id).first()
+    if request.method == 'POST':
+        pass
+    form = AnnouncementForm(instance=announce)
+    return render(request, 'lms/edit_announcement.html', {'form': form})
 
 
 
@@ -194,3 +219,8 @@ def modify_module(request, id, mod_num, mod_page):
         form = EditModule(instance=mod)
     context = {'form': form,'course_name': course.name, 'mod': mod}
     return render(request, 'lms/modulemodify.html', context=context)
+
+
+def logout(request):
+    logout(request)
+    return render(request, 'login/index.html')
