@@ -26,14 +26,14 @@ function toggleCourses(type) {
 }
 
 // Add a click event listener to all announcements
-const announcements = document.querySelectorAll('.announcement');
-
-announcements.forEach((announcement) => {
-    announcement.addEventListener('click', () => {
-        // Perform an action when an announcement is clicked
-        alert('You clicked on an announcement: ' + announcement.querySelector('.announcement-title').textContent);
-    });
-});
+//const announcements = document.querySelectorAll('.announcement');
+//
+//announcements.forEach((announcement) => {
+//    announcement.addEventListener('click', () => {
+//        // Perform an action when an announcement is clicked
+//        alert('You clicked on an announcement: ' + announcement.querySelector('.announcement-title').textContent);
+//    });
+//});
 
 document.addEventListener("DOMContentLoaded", function() {
     const addCourseButton = document.getElementById("addCourseButton");
@@ -45,42 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-//document.addEventListener("DOMContentLoaded", function () {
-//    const courseCreationForm = document.getElementById("courseCreationForm");
-//
-//    courseCreationForm.addEventListener("submit", function (event) {
-//        event.preventDefault(); // Prevent the default form submission
-//
-//        // Get form inputs
-//        const courseName = document.getElementById("courseName").value;
-//        const courseDescription = document.getElementById("courseDescription").value;
-//        const enrollmentStartDate = document.getElementById("enrollmentStartDate").value;
-//        const enrollmentEndDate = document.getElementById("enrollmentEndDate").value;
-//        const courseStartDate = document.getElementById("courseStartDate").value;
-//        const courseEndDate = document.getElementById("courseEndDate").value;
-//        const labTime = document.getElementById("labTime").value;
-//        const labDay = document.getElementById("labDay").value;
-//        const lectureTime = document.getElementById("lectureTime").value;
-//        const lectureDay = document.getElementById("lectureDay").value;
-//        const courseImage = document.getElementById("courseImage").files[0];
-//
-//        // Perform basic form validation
-//        if (!courseName || !courseDescription || !enrollmentStartDate || !enrollmentEndDate
-//            || !courseStartDate || !courseEndDate || !labTime || !labDay || !lectureTime || !lectureDay || !courseImage) {
-//            alert("Please fill in all fields.");
-//            return;
-//        }
-//
-//        // You can now proceed with form submission or further processing
-//        // For example, you can use AJAX to send data to the server
-//
-//        // Reset the form after successful submission
-//        courseCreationForm.reset();
-//
-//        // Optionally, you can display a success message to the user
-//        alert("Course created successfully!");
-//    });
-//});
+
 function discardCourse() {
     // Display a confirmation dialog
     var confirmDiscard = confirm("Are you sure you want to discard this course?");
@@ -126,22 +91,45 @@ function editModule() {
     } else {
         nextPageButton.style.display = "none"; // Hide the "Next Page" button
     }
+}
 
-//    if (!isEditable) {
-////        contentTextarea.removeAttribute("readonly");
-////        isEditable = true;
+
+const cancelModal = document.getElementById("CancelModal");
+const body = document.querySelector("body");
+var cancel_btn = document.getElementById("can_btn");
+
+
 //
-//        editButton.classList.add("editable");
-//        editOptions.style.display = "block"; // Show the three buttons
-//    } else {
-////        contentTextarea.setAttribute("readonly", "readonly");
-////        isEditable = false;
-//        editButton.classList.remove("editable");
-//        editOptions.style.display = "none"; // Hide the three buttons
-//    }
+//function deletePopup() {
+//    cancelModal.style.display = 'flex';
+//    body.style.overflow = 'hidden';
+//
+//    var get_id =
+//
+//}
 
+
+cancel_btn.onclick = function() {
+    cancelModal.style.display = "none";
+    body.style.overflow = 'auto';
 
 }
+
+const cls_btn = document.querySelectorAll('.cls_btn');
+const id_val = document.getElementById("id_val");
+cls_btn.forEach((cls_btn) => {
+    cls_btn.addEventListener('click', () => {
+        cancelModal.style.display = 'flex';
+        body.style.overflow = 'hidden';
+
+        var input = cls_btn.previousElementSibling;
+        id_val.value = input.value
+    });
+});
+
+
+
+
 
 function nextPage() {
     // Add your code for navigating to the next page here.

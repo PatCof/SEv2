@@ -121,12 +121,38 @@
 
 <hr>
 
+    <div id="CancelModal">
+        <div class="Cancelpopup">
+            <div class="Cancelheader">
+                DELETE ANNOUNCEMENT?
+            </div>
+            <div class="Cancelcontent">
+                <p class="cancel-text">Proceed to Delete the Announcement?</p>
+                <div class="cancel-group">
+                    <form method="post">
+                        {% csrf_token %}
+                        <input id="id_val" name="id_val" type="hidden" value="{{ a.id }}">
+                        <button class="yes_btn" type="submit" >Yes</button>
+                    </form>
+                    <button class="can_btn" id="can_btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 <section>
     <div class="announcements-content">
         {% if announcement %}
             {% for a in announcement %}
                 <div class="announcement">
-                    <h3 class="announcement-title">ANNOUNCEMENT: {{ a.title }}</h3>
+                    <div class="a-header">
+                        <h3 class="announcement-title">ANNOUNCEMENT: {{ a.title }}</h3>
+                        <input class='ann_id' type="hidden" value={{a.id}}>
+                        <button type="button" class="cls_btn" >x
+<!--                            <i class="fa-solid fa-xmark"></i>-->
+                        </button>
+                    </div>
                     <p class="announcement-description">{{ a.text.html| safe }}</p>
                     <a href="{% url 'lms:edit_announcements' a_id=a.id %}" class="editbtn">
                         <div class="div_btn">

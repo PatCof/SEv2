@@ -18,6 +18,10 @@ def dashboard(request):
     course = Courses.objects.filter(user_id=user.id)
     announcement = Announcements.objects.filter(user_id=user.id)
 
+    if request.method == 'POST':
+        an_id = request.POST.get('id_val')
+        Announcements.objects.filter(id=an_id).delete()
+
     return render(request, 'lms/dashboard.html', {'course': course, 'announcement': announcement})
 
 @login_required
@@ -66,13 +70,13 @@ def edit_announcements(request, a_id):
     form = AnnouncementForm(instance=announce)
     return render(request, 'lms/edit_announcement.html', {'form': form})
 
-@login_required
-def delete_announcements(request, a_id):
-    announce = Announcements.objects.filter(id=a_id).first()
-    if request.method == 'POST':
-        pass
-    form = AnnouncementForm(instance=announce)
-    return render(request, 'lms/edit_announcement.html', {'form': form})
+# @login_required
+# def delete_announcements(request, a_id):
+#     announce = Announcements.objects.filter(id=a_id).first()
+#     if request.method == 'POST':
+#         pass
+#     form = AnnouncementForm(instance=announce)
+#     return render(request, 'lms/edit_announcement.html', {'form': form})
 
 
 
