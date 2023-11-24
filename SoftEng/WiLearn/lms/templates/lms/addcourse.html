@@ -38,12 +38,12 @@
                 <span>Courses</span>
             </a>
         </li>
-        <li>
-            <a href="#">
-                <i class="fa fa-calendar"></i>
-                <span>Activities</span>
-            </a>
-        </li>
+<!--        <li>-->
+<!--            <a href="#">-->
+<!--                <i class="fa fa-calendar"></i>-->
+<!--                <span>Activities</span>-->
+<!--            </a>-->
+<!--        </li>-->
         <li>
             <a href="{% url 'lms:inbox' %}">
                 <i class="fa fa-inbox"></i>
@@ -53,6 +53,27 @@
     </ul>
 </nav>
 
+
+    <div id="CancelModal">
+        <div class="Cancelpopup">
+            <div class="Cancelheader">
+                DISCARD ANNOUNCEMENT?
+            </div>
+            <div class="Cancelcontent">
+                <p class="cancel-text">Cancel Announcement?</p>
+                <div class="cancel-group">
+                    <button class="yes_btn" onclick="cancelCourse()">Discard</button>
+                    <button class="can_btn" id="can_btn" onclick="cancelCancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
 <!-- Section Content -->
 <section class="content">
     <div class="header-container">
@@ -60,7 +81,6 @@
         <h1 class="wl">Wi-Learn</h1>
     </div>
 </section>
-
 <section class="course-creation">
     <h1>Create Course</h1>
     <hr>
@@ -117,7 +137,7 @@
         </div>
     <hr>
     <div class="button-containers">
-        <button class="cancel-button" onclick="discardCourse()">Cancel</button>
+        <button type="button" class="cancel-button" onclick="discardCourse()">Cancel</button>
 <!--        <button class="save-button">Save</button>-->
         <button class="publish-button">Publish</button>
     </div>

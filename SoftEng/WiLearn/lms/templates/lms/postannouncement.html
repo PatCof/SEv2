@@ -43,12 +43,12 @@
                 <span>Courses</span>
             </a>
         </li>
-        <li>
-            <a href="#">
-                <i class="fa fa-calendar"></i>
-                <span>Activities</span>
-            </a>
-        </li>
+<!--        <li>-->
+<!--            <a href="#">-->
+<!--                <i class="fa fa-calendar"></i>-->
+<!--                <span>Activities</span>-->
+<!--            </a>-->
+<!--        </li>-->
         <li>
             <a href="{% url 'lms:inbox' %}">
                 <i class="fa fa-inbox"></i>
@@ -65,6 +65,22 @@
         <h1 class="wl">Wi-Learn</h1>
     </div>
 </section>
+
+    <div id="CancelModal">
+        <div class="Cancelpopup">
+            <div class="Cancelheader">
+                DISCARD ANNOUNCEMENT?
+            </div>
+            <div class="Cancelcontent">
+                <p class="cancel-text">Cancel Announcement?</p>
+                <div class="cancel-group">
+                    <button class="yes_btn" onclick="cancelAnnouncement()">Discard</button>
+                    <button class="can_btn" id="can_btn" onclick="cancelCancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 <section class="announcement-creation">
     <h2>Create Announcement</h2>
@@ -83,7 +99,7 @@
                 {{ form.errors.text }}
             {% endif %}
         <hr>
-        <button class="cancel-button" onclick="cancelAnnouncement()">Cancel</button>
+        <button type="button" class="cancel-button" onclick="discardAnnouncement()">Cancel</button>
         <button type="submit" class="publish-button">Publish</button>
         <!--        <button type="submit" class="publish-button" onclick="publishAnnouncement()">Publish</button> -->
         </form>

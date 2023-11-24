@@ -1,5 +1,3 @@
-// JavaScript code to control the visibility and text color of courses
-
 const activeCourses = document.getElementById('activeCourses');
 const inactiveCourses = document.getElementById('inactiveCourses');
 const activeButton = document.getElementById('activeButton');
@@ -25,15 +23,6 @@ function toggleCourses(type) {
     }
 }
 
-// Add a click event listener to all announcements
-//const announcements = document.querySelectorAll('.announcement');
-//
-//announcements.forEach((announcement) => {
-//    announcement.addEventListener('click', () => {
-//        // Perform an action when an announcement is clicked
-//        alert('You clicked on an announcement: ' + announcement.querySelector('.announcement-title').textContent);
-//    });
-//});
 
 document.addEventListener("DOMContentLoaded", function() {
     const addCourseButton = document.getElementById("addCourseButton");
@@ -46,15 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
 
-function discardCourse() {
-    // Display a confirmation dialog
-    var confirmDiscard = confirm("Are you sure you want to discard this course?");
 
-    // If the user confirms, navigate to dashboard.html
-    if (confirmDiscard) {
-        window.location.href = "../";
-    }
-}
 function navigateToPostAnnouncement() {
     // Redirect to postannouncement.html
     window.location.href = "create_announcement/";
@@ -99,16 +80,6 @@ const body = document.querySelector("body");
 var cancel_btn = document.getElementById("can_btn");
 
 
-//
-//function deletePopup() {
-//    cancelModal.style.display = 'flex';
-//    body.style.overflow = 'hidden';
-//
-//    var get_id =
-//
-//}
-
-
 cancel_btn.onclick = function() {
     cancelModal.style.display = "none";
     body.style.overflow = 'auto';
@@ -128,12 +99,25 @@ cls_btn.forEach((cls_btn) => {
 });
 
 
-
-
-
-function nextPage() {
-    // Add your code for navigating to the next page here.
+function cancelCourse(){
+    window.location.href = "../";
 }
+
+function cancelCancel(){
+    cancelModal.style.display = "none";
+    body.style.overflow = 'auto';
+}
+
+function discardCourse(){
+    cancelModal.style.display = 'flex';
+    body.style.overflow = 'hidden';
+}
+
+function cancelModuleEdit(){
+    window.location.href = "../../";
+}
+
+
 
 
 // Initial state

@@ -221,7 +221,6 @@ margin-bottom: 30px;
 }
 
 .announcement {
-    cursor: pointer;
     padding: 30px;
     border: 1px solid #955FB6;
     border-radius: 5px;
@@ -375,10 +374,21 @@ select {
     width: 98%;
 }
 
+.edit-div{
+    text-align: right;
+}
+
+.inner-edit{
+    display: inline-block;
+
+}
+
 .editbtn{
+    width: 70px;
+    height: 30px;
     margin-bottom: 5px;
     display: flex;
-    justify-content:    right;
+    justify-content: right;
     text-decoration: none;
 }
 

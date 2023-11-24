@@ -20,10 +20,6 @@ function toggleDisplay(section) {
     }
 }
 
-//function addCourse() {
-//    // Redirect to postannouncement.html
-//    window.location.href = "module/<int:id>/create_module/";
-//}
 
 function toggleCollapsible(section) {
     const content = document.querySelectorAll(".contents")[section - 1];
@@ -32,15 +28,52 @@ function toggleCollapsible(section) {
     collapsible.classList.toggle("active");
   }
 
+
+
+
+const cancelModal = document.getElementById("CancelModal");
+const body = document.querySelector("body");
+var cancel_btn = document.getElementById("can_btn");
+
+
+function cancelModule(){
+    window.location.href = "../../";
+}
+
+function cancelCancel(){
+    cancelModal.style.display = "none";
+    body.style.overflow = 'auto';
+}
+
+function discardModule(){
+    cancelModal.style.display = 'flex';
+    body.style.overflow = 'hidden';
+}
+
+
+
+
+
+
+
+
+
+
+
+
 // Initial state (Modules is active by default)
 toggleDisplay('modules');
 
-function discardCourse() {
-    // Display a confirmation dialog
-    var confirmDiscard = confirm("Are you sure you want to discard this Module?");
+//function discardCourse() {
+//    // Display a confirmation dialog
+//    var confirmDiscard = confirm("Are you sure you want to discard this Module?");
+//
+//    // If the user confirms, navigate to dashboard.html
+//    if (confirmDiscard) {
+//        window.location.href = "../../";
+//    }
+//}
 
-    // If the user confirms, navigate to dashboard.html
-    if (confirmDiscard) {
-        window.location.href = "../../";
-    }
-}
+
+
+

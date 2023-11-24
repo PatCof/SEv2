@@ -38,12 +38,12 @@
                 <span>Courses</span>
             </a>
         </li>
-        <li>
-            <a href="#">
-                <i class="fa fa-calendar"></i>
-                <span>Activities</span>
-            </a>
-        </li>
+<!--        <li>-->
+<!--            <a href="#">-->
+<!--                <i class="fa fa-calendar"></i>-->
+<!--                <span>Activities</span>-->
+<!--            </a>-->
+<!--        </li>-->
         <li>
             <a href="{% url 'lms:inbox' %}">
                 <i class="fa fa-inbox"></i>
@@ -149,16 +149,20 @@
                     <div class="a-header">
                         <h3 class="announcement-title">ANNOUNCEMENT: {{ a.title }}</h3>
                         <input class='ann_id' type="hidden" value={{a.id}}>
-                        <button type="button" class="cls_btn" >x
-<!--                            <i class="fa-solid fa-xmark"></i>-->
+                        <button type="button" class="cls_btn" >
+                            <i class="fa-solid fa-xmark"></i>
                         </button>
                     </div>
-                    <p class="announcement-description">{{ a.text.html| safe }}</p>
-                    <a href="{% url 'lms:edit_announcements' a_id=a.id %}" class="editbtn">
-                        <div class="div_btn">
-                        <i class="fa fa-regular fa-pen-to-square"></i>  Edit
+                        <p class="announcement-description">{{ a.text.html| safe }}</p>
+                    <div class="edit-div">
+                        <div class="inner-edit">
+                        <a href="{% url 'lms:edit_announcements' a_id=a.id %}" class="editbtn">
+                            <div class="div_btn">
+                            <i class="fa fa-regular fa-pen-to-square"></i>  Edit
+                            </div>
+                        </a>
                         </div>
-                    </a>
+                    </div>
                 </div>
             {% endfor %}
         {% endif %}

@@ -40,12 +40,12 @@
                     <span>Courses</span>
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-calendar"></i>
-                    <span>Activities</span>
-                </a>
-            </li>
+<!--            <li>-->
+<!--                <a href="#">-->
+<!--                    <i class="fa fa-calendar"></i>-->
+<!--                    <span>Activities</span>-->
+<!--                </a>-->
+<!--            </li>-->
             <li>
                 <a href="{% url 'lms:inbox' %}">
                     <i class="fa fa-inbox"></i>
@@ -58,11 +58,27 @@
 <!-- Section Content -->
 <section class="content">
     <div class="header-container">
-<!--        <h1 class="db">Course Title</h1>-->
         <h1 class="db">{{ course_name }}</h1>
         <h1 class="wl">Wi-Learn</h1>
     </div>
 </section>
+
+    <div id="CancelModal">
+        <div class="Cancelpopup">
+            <div class="Cancelheader">
+                DISCARD ANNOUNCEMENT?
+            </div>
+            <div class="Cancelcontent">
+                <p class="cancel-text">Cancel Announcement?</p>
+                <div class="cancel-group">
+                    <button class="yes_btn" onclick="cancelModuleEdit()">Discard</button>
+                    <button class="can_btn" id="can_btn" onclick="cancelCancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 <section class="dashboard-content">
     <form id="dashboard-form" method="post">
@@ -80,16 +96,13 @@
         </div>
 
         <div class="button-containers" id="edit-options" style="display: none;">
-            <button class="cancel-button" onclick="discardCourse()">Cancel</button>
+            <button type="button" class="cancel-button" onclick="discardCourse()">Cancel</button>
 <!--            <button class="save-button">Save</button>-->
             <button class="publish-button">Publish</button>
         </div>
         <button class="next-page-button" style="display: block;" onclick="nextPage()">Next Page</button>
     </form>
 </section>
-
-
-
 
 <script src="{% static 'lms/js/dashboard.js' %}">
 

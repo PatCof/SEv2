@@ -23,6 +23,23 @@ function editProfile(){
     });
 }
 
+const cancelModal = document.getElementById("CancelModal");
+const body = document.querySelector("body");
+var cancel_btn = document.getElementById("can_btn");
+
+
+function discardModal(){
+    cancelModal.style.display = 'flex';
+    body.style.overflow = 'hidden';
+}
+
+function cancelCancel(){
+    cancelModal.style.display = "none";
+    body.style.overflow = 'auto';
+
+}
+
+
 function cancelProfile(){
     const bio_form = document.getElementById("id_biography");
     const contact_form = document.getElementById("id_contacts");
@@ -43,7 +60,7 @@ function cancelProfile(){
 
     edit.style.display= "inline-block";
 
-
+    cancelCancel();
 }
 
 

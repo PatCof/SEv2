@@ -41,12 +41,12 @@
                 <span>Courses</span>
             </a>
         </li>
-        <li>
-            <a href="#">
-                <i class="fa fa-calendar"></i>
-                <span>Activities</span>
-            </a>
-        </li>
+<!--        <li>-->
+<!--            <a href="#">-->
+<!--                <i class="fa fa-calendar"></i>-->
+<!--                <span>Activities</span>-->
+<!--            </a>-->
+<!--        </li>-->
         <li>
             <a href="{% url 'lms:inbox' %}">
                 <i class="fa fa-inbox"></i>
@@ -64,6 +64,24 @@
     </div>
 </section>
 
+    <div id="CancelModal">
+        <div class="Cancelpopup">
+            <div class="Cancelheader">
+                DISCARD ANNOUNCEMENT?
+            </div>
+            <div class="Cancelcontent">
+                <p class="cancel-text">Cancel Announcement?</p>
+                <div class="cancel-group">
+                    <button class="yes_btn" onclick="cancelModule()">Discard</button>
+                    <button class="can_btn" id="can_btn" onclick="cancelCancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
 <section class="course-creation">
 <form method="post">
     {% csrf_token %}
@@ -71,14 +89,10 @@
     <div class="form-group">
         {{ form.module_title.label_tag }}
         {{ form.module_title }}
-<!--        <label for="moduleName">Module Title:</label>-->
-<!--        <input type="text" id="moduleName" name="moduleName" required>-->
     </div>
     <div class="form-group">
         {{ form.module_content.label_tag }}
         {{ form.module_content }}
-<!--        <label for="moduleContent">Module Content:</label>-->
-<!--        <textarea id="moduleContent" name="moduleContent" required></textarea>-->
     </div>
     {% endif %}
 
@@ -86,9 +100,7 @@
 <hr>
 
     <div class="button-containers">
-<!--        <button class="cancel-button" onclick="{% url 'lms:module' id=id %}">Cancel</button>-->
-        <button class="cancel-button" onclick="discardCourse()">Cancel</button>
-<!--        <button class="save-button">Save</button>-->
+        <button type="button" class="cancel-button" onclick="discardModule()">Cancel</button>
         <button type="submit" class="publish-button">Publish</button>
     </div>
 

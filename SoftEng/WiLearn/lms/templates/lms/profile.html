@@ -37,12 +37,12 @@
                     <span>Courses</span>
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-calendar"></i>
-                    <span>Activities</span>
-                </a>
-            </li>
+<!--            <li>-->
+<!--                <a href="#">-->
+<!--                    <i class="fa fa-calendar"></i>-->
+<!--                    <span>Activities</span>-->
+<!--                </a>-->
+<!--            </li>-->
             <li>
                 <a href="{% url 'lms:inbox' %}">
                     <i class="fa fa-inbox"></i>
@@ -68,6 +68,23 @@
             <hr>
         </div>
     </section>
+
+        <div id="CancelModal">
+        <div class="Cancelpopup">
+            <div class="Cancelheader">
+                DISCARD EDITS?
+            </div>
+            <div class="Cancelcontent">
+                <p class="cancel-text">Cancel Editing Profile?</p>
+                <div class="cancel-group">
+                    <button class="yes_btn" onclick="cancelProfile()">Discard</button>
+                    <button class="can_btn" id="can_btn" onclick="cancelCancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <section class="profile-content">
         <form method="post" enctype="multipart/form-data">
@@ -138,7 +155,7 @@
             <hr id="hr-form">
         <div class="profile-button" id="pr-btn">
                 <button type="button" id="edit_btn" class="def-profile" onclick="editProfile()"><i class="fa fa-regular fa-pen-to-square"></i> Edit Profile </button>
-                <button type="button" id="cancel" class="edit-form" onclick="cancelProfile()">Cancel</button>
+                <button type="button" id="cancel" class="edit-form" onclick="discardModal()">Discard</button>
                 <button type="submit"  class="edit-form"><i class="fa fa-regular fa-floppy-disk"></i>  Save</button>
         </div>
         </form>
