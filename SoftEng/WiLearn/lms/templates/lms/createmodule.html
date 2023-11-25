@@ -53,6 +53,13 @@
                 <span>Inbox</span>
             </a>
         </li>
+
+        <li>
+            <a href="{% url 'logout' %}">
+                <i class="fa fa-sign-out"></i>
+                <span>Logout</span>
+            </a>
+        </li>
     </ul>
 </nav>
 
@@ -67,10 +74,10 @@
     <div id="CancelModal">
         <div class="Cancelpopup">
             <div class="Cancelheader">
-                DISCARD ANNOUNCEMENT?
+                Discard Module?
             </div>
             <div class="Cancelcontent">
-                <p class="cancel-text">Cancel Announcement?</p>
+                <p class="cancel-text">Are you sure you want to discard updates from this course?</p>
                 <div class="cancel-group">
                     <button class="yes_btn" onclick="cancelModule()">Discard</button>
                     <button class="can_btn" id="can_btn" onclick="cancelCancel()">Cancel</button>

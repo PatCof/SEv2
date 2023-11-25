@@ -50,6 +50,12 @@
                 <span>Inbox</span>
             </a>
         </li>
+        <li>
+            <a href="{% url 'logout' %}">
+                <i class="fa fa-sign-out"></i>
+                <span>Logout</span>
+            </a>
+        </li>
     </ul>
 </nav>
 
@@ -69,9 +75,6 @@
         <div class="course-buttons">
             <button id="modulesButton" onclick="toggleDisplay('modules')">
                 Modules
-            </button>
-            <button id="calendarButton" onclick="toggleDisplay('calendar')">
-                Calendar
             </button>
         </div>
 
@@ -185,75 +188,19 @@
         <hr>
 
         <h1>Assignments</h1>
-        <button class="collapsible" onclick="toggleCollapsible(6)">Module 6</button>
+        <button class="collapsible" onclick="toggleCollapsible(7)">Assignments</button>
         <div class="contents">
-            <div class="lessoncontent">
-                <a href="modulecontent.html">Module 6 - How to ....</a>
-                </div>
             <div class="lessoncontent">
                 <a class="addModuleButton" title="Add Course" href="{% url 'lms:create_module' id=id mod_num=1%}" >+</a>
                 </div>
         </div>
-        <button class="collapsible" onclick="toggleCollapsible(6)">Module 6</button>
-        <div class="contents">
-            <div class="lessoncontent">
-                <a href="modulecontent.html">Module 6 - How to ....</a>
-                </div>
-            <div class="lessoncontent">
-                <a class="addModuleButton" title="Add Course" href="{% url 'lms:create_module' id=id mod_num=1%}" >+</a>
-                </div>
-        </div>
-        <hr>
-        <h1>Quizzes</h1>
-
-        <button class="collapsible" onclick="toggleCollapsible(6)">Module 6</button>
-        <div class="contents">
-            <div class="lessoncontent">
-                <a href="modulecontent.html">Module 6 - How to ....</a>
-                </div>
-            <div class="lessoncontent">
-                <a class="addModuleButton" title="Add Course" href="{% url 'lms:create_module' id=id mod_num=1%}" >+</a>
-                </div>
-        </div>
-        <button class="collapsible" onclick="toggleCollapsible(6)">Module 6</button>
-        <div class="contents">
-            <div class="lessoncontent">
-                <a href="modulecontent.html">Module 6 - How to ....</a>
-                </div>
-            <div class="lessoncontent">
-                <a class="addModuleButton" title="Add Course" href="{% url 'lms:create_module' id=id mod_num=1%}" >+</a>
-                </div>
-        </div>
-
-        <hr>
-        <h1>Discussions</h1>
-        <button class="collapsible" onclick="toggleCollapsible(6)">Module 6</button>
-        <div class="contents">
-            <div class="lessoncontent">
-                <a href="modulecontent.html">Module 6 - How to ....</a>
-                </div>
-            <div class="lessoncontent">
-                <a class="addModuleButton" title="Add Course" href="{% url 'lms:create_module' id=id mod_num=1%}" >+</a>
-                </div>
-        </div>
-        <button class="collapsible" onclick="toggleCollapsible(6)">Module 6</button>
-        <div class="contents">
-            <div class="lessoncontent">
-                <a href="modulecontent.html">Module 6 - How to ....</a>
-                </div>
-            <div class="lessoncontent">
-                <a class="addModuleButton" title="Add Course" href="{% url 'lms:create_module' id=id mod_num=1%}" >+</a>
-                </div>
-        </div>
-
-
     </div>
 
     <!-- Container for Calendar -->
-    <div id="calendarSection" class="section-container">
+    <!-- <div id="calendarSection" class="section-container">-->
         <!-- Content for Calendar goes here -->
-        <p>This is the Calendar section.</p>
-    </div>
+        <!-- <p>This is the Calendar section.</p>-->
+   <!--  </div>-->
 </section>
 
 <script src="{% static 'lms/js/insidemodule.js' %}"></script>

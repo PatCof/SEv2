@@ -51,6 +51,7 @@ function editModule() {
     const mod_content = document.getElementById("mod_content");
     const mod_form = document.getElementById("mod_form")
     const nextPageButton = document.querySelector(".next-page-button");
+    const previousPageButton = document.querySelector(".previous-page-button");
     const editOptions = document.getElementById("edit-options");
 
     if(!isEditable){
@@ -69,8 +70,10 @@ function editModule() {
 
     if (editOptions.style.display === "none") {
         nextPageButton.style.display = "block"; // Show the "Next Page" button
+        previousPageButton.style.display = "block"; // Show the "Next Page" button
     } else {
         nextPageButton.style.display = "none"; // Hide the "Next Page" button
+        previousPageButton.style.display = "none";
     }
 }
 

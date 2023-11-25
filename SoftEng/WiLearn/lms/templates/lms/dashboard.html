@@ -38,16 +38,16 @@
                 <span>Courses</span>
             </a>
         </li>
-<!--        <li>-->
-<!--            <a href="#">-->
-<!--                <i class="fa fa-calendar"></i>-->
-<!--                <span>Activities</span>-->
-<!--            </a>-->
-<!--        </li>-->
         <li>
             <a href="{% url 'lms:inbox' %}">
                 <i class="fa fa-inbox"></i>
                 <span>Inbox</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'logout' %}">
+                <i class="fa fa-sign-out"></i>
+                <span>Logout</span>
             </a>
         </li>
     </ul>
@@ -101,11 +101,6 @@
 
     <div id="inactiveCourses" class="courses">
         <div class="course-grid">
-            <div class="course">
-                <img src="{% static 'lms/images/offer.png' %}" alt="Course 1">
-                <p class="course-id">Course ID: 12345</p>
-                <p class="course-name">Course Name: Introduction to Programming</p>
-            </div>
         </div>
     </div>
 </section>
@@ -127,7 +122,7 @@
                 DELETE ANNOUNCEMENT?
             </div>
             <div class="Cancelcontent">
-                <p class="cancel-text">Proceed to Delete the Announcement?</p>
+                <p class="cancel-text">Proceed to remove this announcement?</p>
                 <div class="cancel-group">
                     <form method="post">
                         {% csrf_token %}
@@ -147,7 +142,7 @@
             {% for a in announcement %}
                 <div class="announcement">
                     <div class="a-header">
-                        <h3 class="announcement-title">ANNOUNCEMENT: {{ a.title }}</h3>
+                        <h3 class="announcement-title">{{ a.title }}</h3>
                         <input class='ann_id' type="hidden" value={{a.id}}>
                         <button type="button" class="cls_btn" >
                             <i class="fa-solid fa-xmark"></i>
