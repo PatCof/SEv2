@@ -72,7 +72,6 @@ class ProfileForm(forms.ModelForm):
 
 class ModuleForm(forms.ModelForm):
     module_title = forms.CharField(widget=forms.TextInput(attrs={'id': 'moduleName', 'class': 'pf'}))
-    # module_content = forms.CharField(widget=forms.Textarea(attrs={'id': 'moduleContent', 'class': 'pf'}))
     module_content = QuillFormField(widget=forms.Textarea(attrs={'id': 'moduleContent', 'class': 'pf'}))
 
     labels = {

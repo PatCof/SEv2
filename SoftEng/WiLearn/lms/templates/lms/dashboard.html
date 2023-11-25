@@ -85,15 +85,17 @@
     
             {% if course %}
                 {% for c in course %}
-                <a class="course-link" href="{% url 'lms:module' id=c.id %} ">
-                <div class="course">
-                    <img  src="{% get_media_prefix %}{{ c.img }}" alt="Course 2">
-                    <p class="course-id">Course ID: {{ c.course_id }}</p>
-                    <p class="course-name">Course Name: {{ c.name }}</p>
-                    <p class="course-lec">Lecture Schedule: {{ c.lecture_day }}: {{ c.lecture_time }}</p>
-                    <p class="course-lab">Lab Schedule: {{ c.lab_day }}: {{ c.lab_time }}</p>
-                </div>
-                </a>
+                    {% if c.course_end >= date %}
+                    <a class="course-link" href="{% url 'lms:module' id=c.id %} ">
+                    <div class="course">
+                        <img  src="{% get_media_prefix %}{{ c.img }}" alt="Course 2">
+                        <p class="course-id">Course ID: {{ c.course_id }}</p>
+                        <p class="course-name">Course Name: {{ c.name }}</p>
+                        <p class="course-lec">Lecture Schedule: {{ c.lecture_day }}: {{ c.lecture_time }}</p>
+                        <p class="course-lab">Lab Schedule: {{ c.lab_day }}: {{ c.lab_time }}</p>
+                    </div>
+                    </a>
+                    {% endif %}
                 {% endfor %}
             {% endif %}
         </div>
@@ -101,11 +103,21 @@
 
     <div id="inactiveCourses" class="courses">
         <div class="course-grid">
-            <div class="course">
-                <img src="{% static 'lms/images/offer.png' %}" alt="Course 1">
-                <p class="course-id">Course ID: 12345</p>
-                <p class="course-name">Course Name: Introduction to Programming</p>
-            </div>
+           {% if course %}
+                {% for c in course %}
+                    {% if c.course_end < date %}
+                    <a class="course-link" href="{% url 'lms:module' id=c.id %} ">
+                    <div class="course">
+                        <img  src="{% get_media_prefix %}{{ c.img }}" alt="Course 2">
+                        <p class="course-id">Course ID: {{ c.course_id }}</p>
+                        <p class="course-name">Course Name: {{ c.name }}</p>
+                        <p class="course-lec">Lecture Schedule: {{ c.lecture_day }}: {{ c.lecture_time }}</p>
+                        <p class="course-lab">Lab Schedule: {{ c.lab_day }}: {{ c.lab_time }}</p>
+                    </div>
+                    </a>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
 </section>

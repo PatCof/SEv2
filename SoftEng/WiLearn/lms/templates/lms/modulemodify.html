@@ -91,17 +91,36 @@
             {{ mod.module_content.html | safe }}
         </div>
         <div class="form-group" id="mod_form" style="display: none;">
-<!--            <textarea id="content" readonly name="content" rows="6" placeholder="Content here" required>DSADSADASDSADSADDADASASASADSASDDASDAS</textarea>-->
-            {{ form.module_content }}
+            <div class="in_div">
+                {{ form.module_title.label_tag }}
+                {{ form.module_title }}
+            </div>
+            <div class="in_div">
+                {{ form.module_content.label_tag }}
+                {{ form.module_content }}
+            </div>
         </div>
 
         <div class="button-containers" id="edit-options" style="display: none;">
             <button type="button" class="cancel-button" onclick="discardCourse()">Cancel</button>
-<!--            <button class="save-button">Save</button>-->
             <button class="publish-button">Publish</button>
         </div>
-        <button class="next-page-button" style="display: block;" onclick="nextPage()">Next Page</button>
     </form>
+
+    <div class="nav-page">
+        {% if prev_mod %}
+        <div class="navi_prev">
+            <a id="prev_mod" href="{% url 'lms:modify_module' id=id mod_num=prev_mod.module_number mod_page=prev_mod.module_page %}">Previous Section</a>
+        </div>
+            {% endif %}
+
+        {% if next_mod %}
+        <div class="navi_next">
+            <a id="next_mod" href="{% url 'lms:modify_module' id=id mod_num=next_mod.module_number mod_page=next_mod.module_page %}">Next Section</a>
+            </div>
+        {% endif %}
+
+    </div>
 </section>
 
 <script src="{% static 'lms/js/dashboard.js' %}">

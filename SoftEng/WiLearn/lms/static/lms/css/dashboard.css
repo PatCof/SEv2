@@ -502,3 +502,36 @@ select {
     justify-content: space-around;
     text-align: center;
 }
+
+.nav-page{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+
+.navi_next, .navi_prev{
+    flex: 1;
+    display: inline-block;
+}
+
+.navi_next{
+    text-align: right;
+}
+
+#prev_mod,
+#next_mod{
+    text-decoration: none;
+    background-color: #5F62B6;
+    padding: 10px;
+    border-radius: 10px;
+
+}
+
+#next_mod{
+    text-align: right;
+}
+
+.in_div{
+    margin-bottom: 30px;
+}

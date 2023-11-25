@@ -48,6 +48,7 @@ function cancelAnnouncement(){
 function cancelCancel(){
     cancelModal.style.display = "none";
     body.style.overflow = 'auto';
+//    qlblank.contentEditable = "true";
 }
 
 function discardAnnouncement(){
