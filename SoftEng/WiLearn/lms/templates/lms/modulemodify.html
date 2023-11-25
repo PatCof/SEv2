@@ -112,23 +112,15 @@
             <button class="publish-button">Publish</button>
         </div>
        <div class="a">
-        <button class="previous-page-button" style="display: block;" onclick="previousPage()">Previous Page</button>
-        <button class="next-page-button" style="display: block;" onclick="nextPage()">Next Page</button>
-    </div>
-    </form>
-
-    <div class="nav-page">
-        {% if prev_mod %}
-        <div class="navi_prev">
-            <a id="prev_mod" href="{% url 'lms:modify_module' id=id mod_num=prev_mod.module_number mod_page=prev_mod.module_page %}">Previous Section</a>
-        </div>
+           {% if prev_mod %}
+                <a class="previous-page-button" href="{% url 'lms:modify_module' id=id mod_num=prev_mod.module_number mod_page=prev_mod.module_page %}">Previous Page</a>
             {% endif %}
 
-        {% if next_mod %}
-        <div class="navi_next">
-            <a id="next_mod" href="{% url 'lms:modify_module' id=id mod_num=next_mod.module_number mod_page=next_mod.module_page %}">Next Section</a>
-            </div>
-        {% endif %}
+           {% if next_mod %}
+            <a class="next-page-button" href="{% url 'lms:modify_module' id=id mod_num=next_mod.module_number mod_page=next_mod.module_page %}">Next Section</a>
+           {% endif %}
+    </div>
+    </form>
 
     </div>
 </section>

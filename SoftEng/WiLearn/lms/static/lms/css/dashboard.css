@@ -375,8 +375,8 @@ select {
 
     .a{
         display: flex;
-  justify-content: space-between;
-  align-items: center;
+        justify-content: space-between;
+        align-items: center;
     }
 
   .previous-page-button,

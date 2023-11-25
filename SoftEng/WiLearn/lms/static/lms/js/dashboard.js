@@ -49,7 +49,9 @@ function editModule() {
     const content = document.querySelector(".mod_content");
 
     const mod_form = document.getElementById("mod_form")
-    const nav_page = document.querySelector(".nav-page");
+    const ed_button = document.querySelector(".edit-button");
+
+    const nav_page = document.querySelector(".a");
     const editOptions = document.getElementById("edit-options");
 
     if(!isEditable){
@@ -58,7 +60,7 @@ function editModule() {
         mod_content.style.display= 'none';
         mod_form.style.display= 'block';
         editOptions.style.display = "block";
-
+        ed_button.style.display = "none";
         isEditable = true;
 
     } else{
@@ -112,6 +114,8 @@ function cancelCourse(){
 function cancelCancel(){
     cancelModal.style.display = "none";
     body.style.overflow = 'auto';
+    ed_button.style.display = "block";
+
     isEditable = false;
 
 }
