@@ -55,6 +55,13 @@
                 <span>Inbox</span>
             </a>
         </li>
+
+        <li>
+            <a href="{% url 'logout' %}">
+                <i class="fa fa-sign-out"></i>
+                <span>Logout</span>
+            </a>
+        </li>
     </ul>
 </nav>
 
@@ -72,7 +79,7 @@
                 DISCARD ANNOUNCEMENT EDITS?
             </div>
             <div class="Cancelcontent">
-                <p class="cancel-text">Discard Edits?</p>
+                <p class="cancel-text">Are you certain you wish to discard the changes made to the announcement?</p>
                 <div class="cancel-group">
                     <button class="yes_btn" onclick="cancelAnnouncement()">Discard</button>
                     <button class="can_btn" id="can_btn" onclick="cancelCancel()">Cancel</button>

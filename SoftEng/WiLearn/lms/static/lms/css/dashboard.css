@@ -65,12 +65,6 @@
             padding: 10px;
         }
 
-        .dashboard-content{
-            background-color: white;
-            margin-left: 70px; /* Add a margin to move the content to the right of the sidenav */
-            padding: 20px 100px;
-        }
-
         .course-creation{
             background-color: white;
             margin-left: 70px; /* Add a margin to move the content to the right of the sidenav */
@@ -360,48 +354,85 @@ select {
     color: black;
 }
 
-.edit-button{
-    background-color: #D9D9D9;
-    color: #333;
-}
+.edit-button {
+    background-color: #ccc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
 
-.next-page-button{
+
+.dashboard-content {
+        background-color: white;
+        margin-left: 70px; /* Add a margin to move the content to the right of the sidenav */
+        padding: 20px 100px;
+    }
+    /* Add other styles as needed */
+
+    .a{
+        display: flex;
+  justify-content: space-between;
+  align-items: center;
+    }
+
+  .previous-page-button,
+  .next-page-button {
+    display: block;
+    width: 150px;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
     background-color: #5F62B6;
     color: #fff;
-}
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .previous-page-button:hover,
+  .next-page-button:hover {
+    background-color: #4447a1;
+  }
+
+
 
 #moduleName{
     width: 98%;
 }
 
-.edit-div{
-    text-align: right;
-}
-
-.inner-edit{
-    display: inline-block;
-
-}
-
-.editbtn{
-    width: 70px;
-    height: 30px;
-    margin-bottom: 5px;
-    display: flex;
-    justify-content: right;
-    text-decoration: none;
-}
-
-
-.div_btn{
-    background-color: #5F62B6;
-    padding: 5px;
-    width: 60px;
-    height: 20px;
+.mod_content{
+    border: 2px solid black;
+    padding: 20px;
     border-radius: 10px;
-    text-align: center;
-    color: #fff;
 }
+.edit-div {
+    display: flex;
+    justify-content: flex-end; /* Aligns content to the right */
+}
+
+.inner-edit {
+    background-color: #5F62B6; /* Button background color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 8px 15px; /* Padding around the button */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+}
+
+.editbtn {
+    text-decoration: none;
+    color: white; /* Button text color */
+}
+
+.div_btn {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Gap between icon and text */
+}
+
 
 .a-header{
     display: flex;
@@ -418,82 +449,102 @@ select {
     font-size: 20px;
 }
 
-.cls_btn{
-    width: 25px;
-    height: 25px;
-    border-radius: 10px;
-    background-color: #e8e8e8;
-    color: #1f1f1f;
-    text-align: center;
-    font-size: 15px;
-    line-height: 0;
+.cls_btn {
+    border-radius: 50%;
+    width: 30px; /* Adjust the size as needed */
+    height: 30px; /* Adjust the size as needed */
+    border: none;
+    color: #333;
+    background-color: #4444;
+    /* Add any other styles like box-shadow, colors, etc. */
+    font-size: 12px;
 }
 
 
-#CancelModal{
+.cls_btn i {
+    /* Add styles to center the icon */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Add any other styles for the icon */
+}
+
+
+#CancelModal {
     width: 100%;
     height: 100%;
-    display:none;
+    display: none;
     align-items: center;
     justify-content: center;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    overflow: hidden;
+    top: 0;
+    left: 0;
     background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2;
 }
 
-.Cancelpopup{
-    width:30vw;
-    height: 40vh;
-    border-radius: 20px;
-    border-style: solid;
-    text-align: left;
+.Cancelpopup {
+    width: 30vw;
+    height: auto;
+    max-width: 400px;
+    border-radius: 10px;
     background-color: #5F62B6;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     font-family: 'Langar', cursive;
-    z-index: 2;
+    z-index: 3;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Kadwa', sans-serif;
 }
 
-.Cancelheader{
-    flex: 1;
-    font-size: 1.5em;
-    padding: 15px 10px 10px 10px;
-    text-align: left;
-    color: #fafafa;
-}
-
-.Cancelcontent{
-    background-color: #fafafa;
-    flex: 5;
-    padding: 10px 10px 10px 10px;
+.Cancelheader {
+    font-size: 1em;
+    padding: 10px 0;
     text-align: center;
-    font-size: 1.75rem;
+    color: #fafafa;
+    margin-bottom: 20px;
+}
+
+.Cancelcontent {
+    background-color: #fafafa;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.8rem;
     color: #5F62B6;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.cancel-group {
+    display: flex;
+    justify-content: center;
 }
 
 .yes_btn,
-.can_btn{
-    width: 4em;
-    background-color: #333335;
-    color: #222;
+.can_btn {
+    width: 80px;
+    padding: 8px;
+    margin: 0 5px;
     border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
 }
 
-.can_btn{
+/* Rest of your CSS remains unchanged */
+
+
+.can_btn {
     background-color: #EAEAEA;
+    color: #333335;
 }
 
-.yes_btn{
+.yes_btn {
     background-color: #DDE5F7;
-}
-
-
-.cancel-text{
-    margin-bottom: 40px;
+    color: #5F62B6;
 }
 
 .cancel-group{

@@ -52,6 +52,12 @@
                     <span>Inbox</span>
                 </a>
             </li>
+            <li>
+                <a href="{% url 'logout' %}">
+                    <i class="fa fa-sign-out"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
         </ul>
     </nav>
 
@@ -66,10 +72,10 @@
     <div id="CancelModal">
         <div class="Cancelpopup">
             <div class="Cancelheader">
-                DISCARD ANNOUNCEMENT?
+                DISCARD UPDATES?
             </div>
             <div class="Cancelcontent">
-                <p class="cancel-text">Cancel Announcement?</p>
+                <p class="cancel-text">Are you sure you want to discard changes?</p>
                 <div class="cancel-group">
                     <button class="yes_btn" onclick="cancelModuleEdit()">Discard</button>
                     <button class="can_btn" id="can_btn" onclick="cancelCancel()">Cancel</button>
@@ -83,9 +89,9 @@
 <section class="dashboard-content">
     <form id="dashboard-form" method="post">
         {% csrf_token %}
+        <button type="button" id="edit-button" class="edit-button" onclick="editModule()">Edit</button>
         <div class="title">
             <h1 id="module-title">{{ mod.module_title }}</h1>
-            <button type="button" id="edit-button" class="edit-button" onclick="editModule()">Edit</button>
         </div>
         <div class="mod_content" id="mod_content" style="display: block;">
             {{ mod.module_content.html | safe }}
@@ -105,6 +111,10 @@
             <button type="button" class="cancel-button" onclick="discardCourse()">Cancel</button>
             <button class="publish-button">Publish</button>
         </div>
+       <div class="a">
+        <button class="previous-page-button" style="display: block;" onclick="previousPage()">Previous Page</button>
+        <button class="next-page-button" style="display: block;" onclick="nextPage()">Next Page</button>
+    </div>
     </form>
 
     <div class="nav-page">

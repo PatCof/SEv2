@@ -42,35 +42,6 @@ function navigateToPostAnnouncement() {
 }
 
 
-//let isEditable = false;
-//
-//function editModule() {
-//    const moduleTitle = document.getElementById("module-title");
-//    const editButton = document.getElementById("edit-button");
-//    const mod_content = document.getElementById("mod_content");
-//    const mod_form = document.getElementById("mod_form")
-//    const nav_page = document.querySelector(".nav-page");
-//    const editOptions = document.getElementById("edit-options");
-//
-//    if(!isEditable){
-//        mod_content.style.display= 'none';
-//        mod_form.style.display= 'block';
-//        isEditable = true;
-//        editOptions.style.display = "block"; // Show the three buttons
-//    } else{
-//        mod_content.style.display = 'block';
-//        mod_form.style.display = 'none';
-//        isEditable = false;
-//        editOptions.style.display = "none"; // Hide the three buttons
-//    }
-//
-//    if (editOptions.style.display === "none") {
-//        nav_page.style.display = "flex"; // Show the "Next Page" button
-//    } else {
-//        nav_page.style.display = "none"; // Hide the "Next Page" button
-//    }
-//}
-
 let isEditable = false;
 
 function editModule() {
