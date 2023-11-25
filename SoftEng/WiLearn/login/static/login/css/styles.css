@@ -109,17 +109,34 @@ nav {
 
 .container {
     display: flex;
-    flex-direction: row; /* Reverse the order to have image on the right initially */
-    min-height: 82vh;
-    flex-wrap: wrap; /* Wrap elements on smaller screens */
+    align-items: center;
+    justify-content: space-around;
+    /* Add any other styles for the container */
+    background-color: #FDE5EC;
 }
 
-.text-content {
-    background-color: #FDE5EC;
-    padding: 50px;
-    flex: 1; /* Take up 1 part of the available space */
-    order: 2; /* Change the order to 2 for smaller screens (text at the bottom) */
+.image-container {
+    width: 60%;
+    max-width:60%; /* Adjust maximum width for the image container */
+    overflow: hidden;
 }
+
+.single-image {
+    width: 100%; /* Fill the container width */
+    height: 70vh; /* Fill the entire height of the viewport */
+    display: block;
+    object-fit: cover; /* Cover the entire container */
+}
+
+
+.text-content {
+    width: 40%; /* Adjust the width of the text content */
+    /* Add any other styles for the text content */
+    padding: 30px;
+}
+
+/* Rest of your existing styles for the slideshow, dots, etc. */
+
 
 .text-content h1 {
     font-size: 4rem;
@@ -326,7 +343,7 @@ input {
 }
 
 .join {
-    background-image: url('https://www.uopeople.edu/wp-content/uploads/bb-plugin/cache/How-to-Make-Studying-Fun-to-Keep-You-Motivated-landscape.webp'); /* Replace 'your-background-image.jpg' with the image URL */
+    background-image: url('https://tandfbis.s3-us-west-2.amazonaws.com/rt-files/Faculty/Laura+Maisey/10+tips+for+successful+studying+3+OP.jpg'); /* Replace 'your-background-image.jpg' with the image URL */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
