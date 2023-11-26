@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kadwa&family=Lato:wght@100;300&family=REM&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'lms/css/dashboard.css' %}">
+    <link rel="icon" href="{% static 'lms/images/logo.png' %}" type="image/png">
+    <title>Wawawi</title>
+</head>
+<body>
+
+<!-- Side Navigation Bar -->
+<nav class="sidenav">
+    <ul>
+        <li>
+            <a href="{% url 'lms:dashboard' %}">
+                <img class="logo" src="{% static 'lms/images/logo.png' %}" alt="Your Logo">
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'lms:profile' %}">
+                <i class="fa fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'lms:dashboard' %}">
+                <i class="fa fa-tachometer"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-book"></i>
+                <span>Courses</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'lms:inbox' %}">
+                <i class="fa fa-inbox"></i>
+                <span>Inbox</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'login:logout' %}">
+                <i class="fa fa-sign-out"></i>
+                <span>Logout</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<!-- Section Content -->
+<section class="content">
+    <div class="header-container">
+        <h1 class="db">DASHBOARD</h1>
+        {% if user.is_authenticated %}
+            <h1>{{user.username}}</h1>
+        {% endif %}
+        <h1 class="wl">Wi-Learn</h1>
+    </div>
+</section>
+
+<section class="dashboard-content">
+    <div class="button-container">
+        <div class="course-buttons">
+            <button id="activeButton" onclick="toggleCourses('active')">
+                Active Courses
+            </button>
+            <button id="inactiveButton" onclick="toggleCourses('inactive')">
+                Inactive Courses
+            </button>
+        </div>
+        <button id="addCourseButton" class="add-course-button" title="Add Course">+</button>
+    </div>
+    <hr>
+
+<section class="courses-section">
+    <div id="activeCourses" class="courses">
+        <!-- Add your active course content here -->
+        <div class="course-grid">
+    
+            {% if course %}
+                {% for c in course %}
+                    {% if c.course_end >= date %}
+                    <a class="course-link" href="{% url 'lms:module' id=c.id %} ">
+                    <div class="course">
+                        <img  src="{% get_media_prefix %}{{ c.img }}" alt="Course 2">
+                        <p class="course-id">Course ID: {{ c.course_id }}</p>
+                        <p class="course-name">Course Name: {{ c.name }}</p>
+                        <p class="course-lec">Lecture Schedule: {{ c.lecture_day }}: {{ c.lecture_time }}</p>
+                        <p class="course-lab">Lab Schedule: {{ c.lab_day }}: {{ c.lab_time }}</p>
+                    </div>
+                    </a>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    <div id="inactiveCourses" class="courses">
+        <div class="course-grid">
+           {% if course %}
+                {% for c in course %}
+                    {% if c.course_end < date %}
+                    <a class="course-link" href="{% url 'lms:module' id=c.id %} ">
+                    <div class="course">
+                        <img  src="{% get_media_prefix %}{{ c.img }}" alt="Course 2">
+                        <p class="course-id">Course ID: {{ c.course_id }}</p>
+                        <p class="course-name">Course Name: {{ c.name }}</p>
+                        <p class="course-lec">Lecture Schedule: {{ c.lecture_day }}: {{ c.lecture_time }}</p>
+                        <p class="course-lab">Lab Schedule: {{ c.lab_day }}: {{ c.lab_time }}</p>
+                    </div>
+                    </a>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<section class="announcements">
+    <div class="announcement-title">
+        <h2 class="ann">Posted Announcements</h2>
+    </div>
+    <div class="post-announcement-button">
+        <button id="postAnnouncementButton" title="Post Announcements" onclick="navigateToPostAnnouncement()">+</button>
+    </div>
+</section>
+
+<hr>
+
+    <div id="CancelModal">
+        <div class="Cancelpopup">
+            <div class="Cancelheader">
+                DELETE ANNOUNCEMENT?
+            </div>
+            <div class="Cancelcontent">
+                <p class="cancel-text">Proceed to remove this announcement?</p>
+                <div class="cancel-group">
+                    <form method="post">
+                        {% csrf_token %}
+                        <input id="id_val" name="id_val" type="hidden" value="{{ a.id }}">
+                        <button class="yes_btn" type="submit" >Yes</button>
+                    </form>
+                    <button class="can_btn" id="can_btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<section>
+    <div class="announcements-content">
+        {% if announcement %}
+            {% for a in announcement %}
+                <div class="announcement">
+                    <div class="a-header">
+                        <h3 class="announcement-title">{{ a.title }}</h3>
+                        <input class='ann_id' type="hidden" value={{a.id}}>
+                        <button type="button" class="cls_btn" >
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                        <p class="announcement-description">{{ a.text.html| safe }}</p>
+                    <div class="edit-div">
+                        <div class="inner-edit">
+                        <a href="{% url 'lms:edit_announcements' a_id=a.id %}" class="editbtn">
+                            <div class="div_btn">
+                            <i class="fa fa-regular fa-pen-to-square"></i>  Edit
+                            </div>
+                        </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+    </div>
+</section>
+
+</section>
+<script src="{% static 'lms/js/dashboard.js' %}"></script>
+</body>
+</html>

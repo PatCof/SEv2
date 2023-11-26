@@ -1,0 +1,159 @@
+body{
+    margin: 0;
+}
+
+.sidenav{
+    height:100%;
+    width: 70px;
+    position:fixed;
+    z-index:1;
+    top:0;
+    left:0;
+    background-color: #2F293D;
+    overflow-x:hidden;
+}
+
+.sidenav li{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+}
+
+
+.sidenav ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+.sidenav a{
+    display: block;
+    text-decoration: none;
+    color: #ffffff;
+}   
+
+
+.sidenav .logo{
+    width: 24px;
+    height: 24px;
+}
+
+.sidenav i {
+    font-size: 24px;
+}
+
+.sidenav span{
+    margin-top: 5px;
+    display: none;
+}
+
+.sidenav li:hover span{
+    display:block
+}
+
+.content{
+    background-color: #5F62B6;
+    margin-left: 70px; 
+    padding: 10px;
+}
+
+.header-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-title{
+    margin-left: 90px;
+}
+
+hr{
+    width: 95%;
+    margin-left: 0;
+}
+
+.profile-content{
+    margin-left: 90px;
+}
+
+
+.profile-box{
+    display: flex;
+}
+
+
+.profile-image{
+    margin-left:0px;
+    margin-right: 15px;
+    flex:0.25;
+}
+
+.profile-image img{
+    height: 140px;
+    width: 140px;
+    border-radius: 50%;
+}
+
+.profile-data{
+    margin-left:0px;
+    flex:1.5;
+}
+
+.profile{
+    width: 80%;
+}
+
+.profile-button{
+    width: 80%;
+    text-align: right;
+}
+
+.profile-button button{
+    height: 40px;
+    width: 100px;
+}
+
+#cancel {
+    background-color: #D9D9D9;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+#save {
+    background-color: #5F62B6;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.div-image{
+    text-align: center;
+    justify-content: center;
+}
+
+
+h1.prof{
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-size: 25px;
+    margin: 0;
+}
+
+h1.wl {
+    color: #FDE5EC;
+    font-family: 'Langar', cursive;
+    font-size: 35px;
+    margin: 0;
+}
