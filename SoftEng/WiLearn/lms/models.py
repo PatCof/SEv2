@@ -53,9 +53,15 @@ class Profile(models.Model):
 class Module(models.Model):
     course_id = models.ForeignKey(Courses, on_delete=models.CASCADE)
     module_title = models.TextField()
-    # module_content = models.TextField()
     module_content = QuillField()
 
     module_number = models.IntegerField()
     module_page = models.IntegerField()
+
+class Assignments(models.Model):
+    course = models.ForeignKey(Courses, on_delete=models.CASCADE)
+    assign_title = models.TextField()
+    assign_content = QuillField()
+    assign_num = models.IntegerField()
+    assign_score = models.IntegerField(blank=True, null=True)
 

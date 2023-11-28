@@ -1,5 +1,5 @@
 from django import forms
-from .models import Announcements, Courses, Profile, Module
+from .models import Announcements, Courses, Profile, Module, Assignments
 from django_quill.forms import QuillFormField
 
 
@@ -95,3 +95,13 @@ class EditModule(forms.ModelForm):
         model = Module
         exclude = ['module_title']
         fields = ['module_content']
+
+
+class AssignmentForm(forms.ModelForm):
+    assign_title = forms.CharField(widget=forms.TextInput(attrs={'class': 'announce'}))
+    assign_content = QuillFormField(widget=forms.TextInput(attrs={'class': 'announce'}))
+
+    class Meta:
+        model = Assignments
+        fields = ['assign_title', 'assign_content']
+        labels = {"assign_title": "Assignment Title", "assign_content": "Assignment Content"}

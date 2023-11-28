@@ -38,12 +38,7 @@
                 <span>Courses</span>
             </a>
         </li>
-<!--        <li>-->
-<!--            <a href="#">-->
-<!--                <i class="fa fa-calendar"></i>-->
-<!--                <span>Activities</span>-->
-<!--            </a>-->
-<!--        </li>-->
+
         <li>
             <a href="{% url 'lms:inbox' %}">
                 <i class="fa fa-inbox"></i>
@@ -190,8 +185,15 @@
         <h1>Assignments</h1>
         <button class="collapsible" onclick="toggleCollapsible(7)">Assignments</button>
         <div class="contents">
+                {% if assign %}
+                {% for a in assign %}
+                    <div class="lessoncontent">
+                        <a href="{% url 'lms:edit_assign' id=id assign_num=a.assign_num %}">Assignment# {{ a.assign_num}} - {{ a.assign_title }}</a>
+                    </div>
+                {% endfor %}
+            {% endif %}
             <div class="lessoncontent">
-                <a class="addModuleButton" title="Add Course" href="{% url 'lms:create_module' id=id mod_num=1%}" >+</a>
+                <a class="addModuleButton" title="Add Assignment" href="{% url 'lms:create_assign' id=id %}" >+</a>
                 </div>
         </div>
     </div>

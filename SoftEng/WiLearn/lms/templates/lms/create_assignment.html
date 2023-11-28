@@ -2,12 +2,15 @@
 <html>
 <head>
     {% load static %}
+    {{ form.media }}
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kadwa&family=Langar&family=Lato:wght@100;300&family=REM&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="{% static 'lms/css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'lms/css/inside_module.css' %}">
     <link rel="icon" href="{% static 'lms/images/logo.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'lms/css/dashboard.css' %}">
     <title>Wawawi</title>
 </head>
 <body>
@@ -63,30 +66,54 @@
 <!-- Section Content -->
 <section class="content">
     <div class="header-container">
-        <h1 class="db">Course Title</h1>
+        <h1 class="db">Create New Assignment</h1>
         <h1 class="wl">Wi-Learn</h1>
     </div>
 </section>
 
-<section class="dashboard-content">
-    <form id="dashboard-form">
-        <div class="form-group">
-            <label for="module">MODULE:</label>
-            <input type="text" id="module" name="module" placeholder="Enter module name" required>
+    <div id="CancelModal">
+        <div class="Cancelpopup">
+            <div class="Cancelheader">
+                Discard Assignment?
+            </div>
+            <div class="Cancelcontent">
+                <p class="cancel-text">Are you sure you want to discard this Assignment?</p>
+                <div class="cancel-group">
+                    <button class="yes_btn" onclick="cancelAssignment()">Discard</button>
+                    <button class="can_btn" id="can_btn" onclick="cancelCancel()">Cancel</button>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="content">CONTENT:</label>
-            <textarea id="content" name="content" rows="6" placeholder="Enter content here" required></textarea>
-        </div>
-        <div class="button-containers">
-            <button class="cancel-button" onclick="discardCourse()">Cancel</button>
-            <button class="save-button">Save</button>
-            <button class="publish-button">Publish</button>
-        </div>
-    </form>
+    </div>
+
+
+
+
+<section class="course-creation">
+<form method="post">
+    {% csrf_token %}
+    {% if form %}
+    <div class="form-group">
+        {{ form.title.label_tag }}
+        {{ form.title }}
+    </div>
+    <div class="form-group">
+        {{ form.text.label_tag }}
+        {{ form.text }}
+    </div>
+    {% endif %}
+
+
+<hr>
+    <div class="button-containers">
+        <button type="button" class="cancel-button" onclick="discardModule()">Cancel</button>
+        <button type="submit" class="publish-button">Publish</button>
+    </div>
+
+</form>
 </section>
 
-<script src="{% static 'lms/js/dashboard.js' %}">
+<script src="{% static 'lms/js/insidemodule.js' %}">
 
 </script>
 </body>

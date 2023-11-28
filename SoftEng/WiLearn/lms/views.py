@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .forms import AnnouncementForm, CourseForm, ProfileForm, ModuleForm, EditModule
-from .models import Announcements, Courses, Profile, Module
+from .forms import AnnouncementForm, CourseForm, ProfileForm, ModuleForm, EditModule, AssignmentForm
+from .models import Announcements, Courses, Profile, Module, Assignments
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.urls import reverse
@@ -24,7 +24,8 @@ def dashboard(request):
         an_id = request.POST.get('id_val')
         Announcements.objects.filter(id=an_id).delete()
 
-    context = {'course': course,
+    context = {
+                'course': course,
                'announcement': announcement,
                'date': current_date,
                }
@@ -154,6 +155,7 @@ def profile(request):
 @login_required
 def inside_module(request, id):
     module = Module.objects.filter(course_id_id=id)
+    assign = Assignments.objects.filter(course_id=id)
     m1, m2, m3, m4, m5, m6 = None, None, None, None, None, None,
     if module:
         m1 = [m for m in module if m.module_number == 1]
@@ -171,6 +173,7 @@ def inside_module(request, id):
         'mod4': m4,
         'mod5': m5,
         'mod6': m6,
+        'assign': assign
     }
 
     return render(request, 'lms/inside_module.html', context=context)
@@ -212,8 +215,6 @@ def modify_module(request, id, mod_num, mod_page):
             content = form.cleaned_data['module_content']
             mod.module_content = content
             mod.save()
-        # context = {'form': form, 'course_name': course.name, 'mod': mod}
-        # return render(request, 'lms/modulemodify.html', context=context)
 
     else:
         form = ModuleForm(instance=mod)
@@ -232,6 +233,68 @@ def modify_module(request, id, mod_num, mod_page):
     return render(request, 'lms/modulemodify.html', context=context)
 
 
+@login_required
+def create_assign(request, id):
+    if request.method == 'POST':
+        course = Courses.objects.filter(id=id).first()
+        assign_form = AssignmentForm(request.POST)
+        if assign_form.is_valid():
+            newest_assign = Assignments.objects.filter(course_id=id).last()
+
+            new_assign = assign_form.save(commit=False)
+            new_assign.course = course
+            if newest_assign:
+                new_assign.assign_num = newest_assign.assign_num + 1
+            else:
+                new_assign.assign_num = 1
+
+            new_assign.assign_title = assign_form.cleaned_data['title']
+            new_assign.assign_text = assign_form.cleaned_data['text']
+            new_assign.save()
+
+            return redirect(reverse('lms:module', kwargs={'id': id}))
+        else:
+            print(assign_form)
+            print(assign_form.errors)
+
+    form = AssignmentForm()
+    context = {
+        'form': form,
+        'id': id,
+    }
+    return render(request, 'lms/create_assignment.html', context=context)
+
+
+@login_required
+def edit_assign(request, id, assign_num):
+    course = Courses.objects.filter(id=id).first()
+    assign = Assignments.objects.filter(assign_num=assign_num, course_id=id).first()
+    form = AssignmentForm(instance=assign)
+
+    if request.method == 'POST':
+        form = AssignmentForm(request.POST, instance=assign)
+        if form.is_valid():
+            assign.assign_title = form.cleaned_data['assign_title']
+            assign.assign_content = form.cleaned_data['assign_content']
+            assign.save()
+
+    prev_assign = Assignments.objects.filter(assign_num__lt=assign_num, course_id=id).last()
+    next_assign = Assignments.objects.filter(assign_num__gt=assign_num, course_id=id).first()
+
+    context = {
+        'form': form,
+        'course_name': course.name,
+        'assign': assign,
+        'prev_assign': prev_assign,
+        'next_assign': next_assign,
+        'id': id,
+    }
+    return render(request, 'lms/edit_assignment.html', context=context)
+
+
+
+
+@login_required
 def logout(request):
     logout(request)
     return render(request, 'login/index.html')
