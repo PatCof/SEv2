@@ -14,7 +14,6 @@ urlpatterns = [
   path('course/<int:id>/create_module/<int:mod_num>/', views.create_module, name='create_module'),
   path('course/<int:id>/create_assignment/', views.create_assign, name='create_assign'),
   path('course/<int:id>/view_assignment/<int:assign_num>', views.edit_assign, name='edit_assign'),
-
+  path('course/edit_course/<int:id>/', views.edit_course, name='edit_course'),
   path('course/<int:id>/view_module/<int:mod_num>/<int:mod_page>', views.modify_module, name='modify_module'),
-
 ]

@@ -16,13 +16,20 @@ COMPARISON_DICT = {10: "00000", 100: "0000", 1000: "000", 10000: "00", 100000: "
 @login_required
 def dashboard(request):
     user = request.user
-    print(user.id)
     course = Courses.objects.filter(user_id=user.id)
     announcement = Announcements.objects.filter(user_id=user.id)
     current_date = date.today()
     if request.method == 'POST':
-        an_id = request.POST.get('id_val')
-        Announcements.objects.filter(id=an_id).delete()
+        if 'announce_delete' in request.POST:
+            print("HELLO")
+            an_id = request.POST.get('id_val')
+            Announcements.objects.filter(id=an_id).delete()
+
+        elif 'course_delete' in request.POST:
+            print("HIII")
+            c_id = request.POST.get('id_val2')
+            print(c_id)
+            Courses.objects.filter(id=c_id).delete()
 
     context = {
                 'course': course,
@@ -118,6 +125,26 @@ def create_course_id(course_form, teacher):
             course.course_id = f"{teacher.last_name}.{latest_id}"
             break
     return course
+
+
+@login_required
+def edit_course(request, id):
+    course = Courses.objects.filter(id=id).first()
+    if request.method == 'POST':
+        form = CourseForm(request.POST, request.FILES, instance=course)
+        if form.is_valid():
+            course = form.save(commit=False)
+            if form.cleaned_data['img'] is not None:
+                course.img = form.cleaned_data['img']
+
+            course.save()
+            return redirect('lms:dashboard')
+        else:
+            print(form)
+            print(form.errors)
+            # put errors here to display in form
+    form = CourseForm(instance=course)
+    return render(request, 'lms/edit_course.html', {'form': form})
 
 
 @login_required

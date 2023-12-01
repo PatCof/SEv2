@@ -449,7 +449,7 @@ select {
     font-size: 20px;
 }
 
-.cls_btn {
+.cls_btn, .cls_btn1 {
     border-radius: 50%;
     width: 30px; /* Adjust the size as needed */
     height: 30px; /* Adjust the size as needed */
@@ -470,7 +470,20 @@ select {
 }
 
 
-#CancelModal {
+#CancelModal{
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2;
+}
+
+#CancelModal2 {
     width: 100%;
     height: 100%;
     display: none;
@@ -523,7 +536,8 @@ select {
 }
 
 .yes_btn,
-.can_btn {
+.can_btn,
+.can_btn1{
     width: 80px;
     padding: 8px;
     margin: 0 5px;
@@ -537,10 +551,17 @@ select {
 /* Rest of your CSS remains unchanged */
 
 
-.can_btn {
+.can_btn,
+.can_btn1 {
     background-color: #EAEAEA;
     color: #333335;
 }
+
+.can_btn2 {
+    background-color: #EAEAEA;
+    color: #333335;
+}
+
 
 .yes_btn {
     background-color: #DDE5F7;

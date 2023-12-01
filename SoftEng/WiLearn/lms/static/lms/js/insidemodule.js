@@ -40,6 +40,10 @@ function cancelModule(){
     window.location.href = "../../";
 }
 
+function cancelAssignment(){
+    window.location.href = "../";
+}
+
 function cancelCancel(){
     cancelModal.style.display = "none";
     body.style.overflow = 'auto';

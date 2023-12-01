@@ -2,17 +2,18 @@
 {% load static %}
     {% block css %}
         <link rel="stylesheet" href="{% static 'lms/css/dashboard.css' %}">
-
     {% endblock %}
 
+
 {% block content %}
+
     <div id="CancelModal">
         <div class="Cancelpopup">
             <div class="Cancelheader">
-                DISCARD ANNOUNCEMENT?
+                DISCARD CHANGES?
             </div>
             <div class="Cancelcontent">
-                <p class="cancel-text">Cancel Announcement?</p>
+                <p class="cancel-text">Cancel Updating Course?</p>
                 <div class="cancel-group">
                     <button class="yes_btn" onclick="cancelCourse()">Discard</button>
                     <button class="can_btn" id="can_btn" onclick="cancelCancel()">Cancel</button>
@@ -21,7 +22,7 @@
         </div>
     </div>
 
-<!-- Section Content -->
+
 <section class="content">
     <div class="header-container">
         <h1 class="db">DASHBOARD</h1>
@@ -85,12 +86,12 @@
     <hr>
     <div class="button-containers">
         <button type="button" class="cancel-button" onclick="discardCourse()">Cancel</button>
-        <button class="publish-button">Save</button>
+        <button class="publish-button">Save </button>
     </div>
     </form>
 </section>
-{% endblock %}
-    {% block js %}
-        <script src="{% static 'lms/js/dashboard.js' %}"></script>
-    {% endblock %}
 
+{% endblock %}
+{% block js %}
+    <script src="{% static 'lms/js/dashboard.js' %}"></script>
+{% endblock %}

@@ -1,57 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    {{ form.media }}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kadwa&family=Lato:wght@100;300&family=REM&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+{% extends 'lms/lms_base.html' %}
+{% load static %}
+{% block css %}
     <link rel="stylesheet" href="{% static 'lms/css/profile.css' %}">
-    <link rel="icon" href="{% static 'lms/images/logo.png' %}" type="image/png">
-    <title>Wawawi</title>
-</head>
-<body>
-    <nav class="sidenav">
-        <ul>
-            <li>
-                <a href="{% url 'lms:dashboard' %}">
-                    <img class="logo" src="{% static 'lms/images/logo.png' %}" alt="Your Logo">
-                </a>
-            </li>
-            <li>
-                <a href="{% url 'lms:profile' %}">
-                    <i class="fa fa-user"></i>
-                    <span>Profile</span>
-                </a>
-            </li>
-            <li>
-                <a href="{% url 'lms:dashboard' %}">
-                    <i class="fa fa-tachometer"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-book"></i>
-                    <span>Courses</span>
-                </a>
-            </li>
-            <li>
-                <a href="{% url 'lms:inbox' %}">
-                    <i class="fa fa-inbox"></i>
-                    <span>Inbox</span>
-                </a>
-            </li>
-            <li>
-                <a href="{% url 'login:logout' %}">
-                    <i class="fa fa-sign-out"></i>
-                    <span>Logout</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+{% endblock %}
 
+
+
+{% block content %}
     <section class="content">
         <div class="header-container">
             <h1 class="prof">PROFILE</h1>
@@ -83,8 +38,6 @@
             </div>
         </div>
     </div>
-
-
 
     <section class="profile-content">
         <form method="post" enctype="multipart/form-data">
@@ -160,6 +113,9 @@
         </div>
         </form>
     </section>
-    <script src="{% static 'lms/js/profile.js' %}"></script>
-</body>
-</html>
+
+{% endblock %}
+{% block js %}
+        <script src="{% static 'lms/js/profile.js' %}"></script>
+{% endblock %}
+

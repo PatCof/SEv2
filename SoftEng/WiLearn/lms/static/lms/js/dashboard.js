@@ -84,8 +84,11 @@ function editModule() {
 
 
 const cancelModal = document.getElementById("CancelModal");
+const cancelModal2 = document.getElementById("CancelModal2");
+
 const body = document.querySelector("body");
 var cancel_btn = document.getElementById("can_btn");
+var cancel_btn2 = document.getElementById("can_btn2");
 
 
 cancel_btn.onclick = function() {
@@ -94,8 +97,19 @@ cancel_btn.onclick = function() {
 
 }
 
+cancel_btn2.onclick = function() {
+    cancelModal2.style.display = "none";
+    body.style.overflow = 'auto';
+
+}
+
+
 const cls_btn = document.querySelectorAll('.cls_btn');
+const cls_btn1 = document.querySelectorAll('.cls_btn1');
+
 const id_val = document.getElementById("id_val");
+const id_val2 = document.getElementById("id_val2");
+
 cls_btn.forEach((cls_btn) => {
     cls_btn.addEventListener('click', () => {
         cancelModal.style.display = 'flex';
@@ -103,6 +117,16 @@ cls_btn.forEach((cls_btn) => {
 
         var input = cls_btn.previousElementSibling;
         id_val.value = input.value
+    });
+});
+
+cls_btn1.forEach((cls_btn1) => {
+    cls_btn1.addEventListener('click', () => {
+        cancelModal2.style.display = 'flex';
+        body.style.overflow = 'hidden';
+
+        var input = cls_btn1.previousElementSibling;
+        id_val2.value = input.value
     });
 });
 
@@ -124,6 +148,23 @@ function discardCourse(){
     cancelModal.style.display = 'flex';
     body.style.overflow = 'hidden';
 }
+
+function cancelCancel2(){
+    cancelModal2.style.display = "none";
+    body.style.overflow = 'auto';
+    ed_button.style.display = "block";
+
+    isEditable = false;
+
+}
+
+function discardCourse2(){
+    cancelModal2.style.display = 'flex';
+    body.style.overflow = 'hidden';
+}
+
+
+
 
 function cancelModuleEdit(){
     window.location.href = "../../";
