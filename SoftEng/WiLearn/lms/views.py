@@ -275,16 +275,16 @@ def create_assign(request, id):
             else:
                 new_assign.assign_num = 1
 
-            new_assign.assign_title = assign_form.cleaned_data['title']
-            new_assign.assign_text = assign_form.cleaned_data['text']
+            new_assign.assign_title = assign_form.cleaned_data['assign_title']
+            new_assign.assign_content = assign_form.cleaned_data['assign_content']
             new_assign.save()
 
             return redirect(reverse('lms:module', kwargs={'id': id}))
         else:
             print(assign_form)
             print(assign_form.errors)
-
-    form = AssignmentForm()
+    else:
+        form = AssignmentForm()
     context = {
         'form': form,
         'id': id,

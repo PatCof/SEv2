@@ -170,7 +170,10 @@ function cancelModuleEdit(){
     window.location.href = "../../";
 }
 
+function cancelCourseEdit(){
+    window.location.href = "../../../";
 
+}
 
 
 // Initial state

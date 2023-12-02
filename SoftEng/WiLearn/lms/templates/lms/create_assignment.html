@@ -35,12 +35,12 @@
     {% csrf_token %}
     {% if form %}
     <div class="form-group">
-        {{ form.title.label_tag }}
-        {{ form.title }}
+        {{ form.assign_title.label_tag }}
+        {{ form.assign_title }}
     </div>
     <div class="form-group">
-        {{ form.text.label_tag }}
-        {{ form.text }}
+        {{ form.assign_content.label_tag }}
+        {{ form.assign_content }}
     </div>
     {% endif %}
 

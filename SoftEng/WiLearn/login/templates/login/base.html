@@ -27,9 +27,9 @@
                     <li><a href="{% url 'login:main' %}#about">ABOUT</a></li>
                     <li><a href="{% url 'login:main' %}#offers">OFFERS</a></li>
                     <li><a href="{% url 'login:courses' %}">COURSES</a></li>
-                    {% if user.is_authenticated %}
-                        <li><p>{{user.username}}</p></li>
-                    {% endif %}
+<!--                    {% if user.is_authenticated %}-->
+<!--                        <li><p>{{user.username}}</p></li>-->
+<!--                    {% endif %}-->
                 </ul>
             </div>
             <div class="right-nav">
@@ -70,7 +70,9 @@
 
                 <button type="submit" class="signin-button">Sign In</button>
             </form>
-            <p class="forgot-password">Forgot Password?</p>
+            <a class="forgot-password" href="{% url 'password_reset' %}">
+                <p>Forgot Password?</p>
+            </a>
         </div>
     </div>
 
