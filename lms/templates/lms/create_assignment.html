@@ -1,0 +1,60 @@
+{% extends 'lms/lms_base.html' %}
+{% load static %}
+    {% block css %}
+        {{ form.media }}
+        <link rel="stylesheet" href="{% static 'lms/css/insidemodule.css' %}">
+        <link rel="stylesheet" href="{% static 'lms/css/dashboard.css' %}">
+    {% endblock %}
+
+{% block content %}
+<!-- Section Content -->
+<section class="content">
+    <div class="header-container">
+        <h1 class="db">Create New Assignment</h1>
+        <h1 class="wl">Wi-Learn</h1>
+    </div>
+</section>
+
+    <div id="CancelModal">
+        <div class="Cancelpopup">
+            <div class="Cancelheader">
+                Discard Assignment?
+            </div>
+            <div class="Cancelcontent">
+                <p class="cancel-text">Are you sure you want to discard this Assignment?</p>
+                <div class="cancel-group">
+                    <button class="yes_btn" onclick="cancelAssignment()">Discard</button>
+                    <button class="can_btn" id="can_btn" onclick="cancelCancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<section class="course-creation">
+<form method="post">
+    {% csrf_token %}
+    {% if form %}
+    <div class="form-group">
+        {{ form.title.label_tag }}
+        {{ form.title }}
+    </div>
+    <div class="form-group">
+        {{ form.text.label_tag }}
+        {{ form.text }}
+    </div>
+    {% endif %}
+
+
+<hr>
+    <div class="button-containers">
+        <button type="button" class="cancel-button" onclick="discardModule()">Cancel</button>
+        <button type="submit" class="publish-button">Publish</button>
+    </div>
+
+</form>
+</section>
+
+{% endblock %}
+    {% block js %}
+        <script src="{% static 'lms/js/insidemodule.js' %}"></script>
+    {% endblock %}
