@@ -1,0 +1,96 @@
+{% extends 'lms/lms_base.html' %}
+{% load static %}
+    {% block css %}
+        <link rel="stylesheet" href="{% static 'lms/css/dashboard.css' %}">
+
+    {% endblock %}
+
+{% block content %}
+    <div id="CancelModal">
+        <div class="Cancelpopup">
+            <div class="Cancelheader">
+                DISCARD ANNOUNCEMENT?
+            </div>
+            <div class="Cancelcontent">
+                <p class="cancel-text">Cancel Announcement?</p>
+                <div class="cancel-group">
+                    <button class="yes_btn" onclick="cancelCourse()">Discard</button>
+                    <button class="can_btn" id="can_btn" onclick="cancelCancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Section Content -->
+<section class="content">
+    <div class="header-container">
+        <h1 class="db">DASHBOARD</h1>
+        <h1 class="wl">Wi-Learn</h1>
+    </div>
+</section>
+<section class="course-creation">
+    <h1>Create Course</h1>
+    <hr>
+
+    <form id="courseCreationForm" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+        <div class="form-group">
+            {{ form.img.label_tag }}
+            {{ form.img }}
+        </div>
+        <div class="form-group">
+            {{ form.name.label_tag }}
+            {{ form.name }}
+        </div>
+        <div class="form-group">
+            {{ form.desc.label_tag }}
+            {{ form.desc }}
+        </div>
+
+        <div class="form-grid-container">
+            <div class="form-group">
+                {{ form.enrollment_start.label_tag }}
+                {{ form.enrollment_start }}
+            </div>
+            <div class="form-group">
+                {{ form.enrollment_end.label_tag }}
+                {{ form.enrollment_end }}
+            </div>
+            <div class="form-group">
+                {{ form.course_start.label_tag }}
+                {{ form.course_start }}
+            </div>
+            <div class="form-group">
+                {{ form.course_end.label_tag }}
+                {{ form.course_end }}
+            </div>
+            <div class="form-group">
+                {{ form.lab_time.label_tag }}
+                {{ form.lab_time }}
+            </div>
+            <div class="form-group">
+                {{ form.lab_day.label_tag }}
+                {{ form.lab_day }}
+            </div>
+
+            <div class="form-group">
+                {{ form.lecture_time.label_tag }}
+                {{ form.lecture_time }}
+            </div>
+            <div class="form-group">
+                {{ form.lecture_day.label_tag }}
+                {{ form.lecture_day }}
+            </div>
+        </div>
+    <hr>
+    <div class="button-containers">
+        <button type="button" class="cancel-button" onclick="discardCourse()">Cancel</button>
+        <button class="publish-button">Save</button>
+    </div>
+    </form>
+</section>
+{% endblock %}
+    {% block js %}
+        <script src="{% static 'lms/js/dashboard.js' %}"></script>
+    {% endblock %}
+

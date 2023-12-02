@@ -1,0 +1,121 @@
+{% extends 'lms/lms_base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'lms/css/profile.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+    <section class="content">
+        <div class="header-container">
+            <h1 class="prof">PROFILE</h1>
+            {% if user.is_authenticated %}
+                <h2>{{user.username}}</h2>
+            {% endif %}
+            <h1 class="wl">Wi-Learn</h1>
+        </div>
+    </section>
+
+    <section class="profile-title">
+        <div>
+            <h1 class="pr-name">{{user.last_name}}, {{user.first_name}}'s Profile</h1>
+            <hr>
+        </div>
+    </section>
+
+        <div id="CancelModal">
+        <div class="Cancelpopup">
+            <div class="Cancelheader">
+                DISCARD EDITS?
+            </div>
+            <div class="Cancelcontent">
+                <p class="cancel-text">Cancel Editing Profile?</p>
+                <div class="cancel-group">
+                    <button class="yes_btn" onclick="cancelProfile()">Discard</button>
+                    <button class="can_btn" id="can_btn" onclick="cancelCancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="profile-content">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="profile-box">
+                <div class="profile-image">
+                    <div class="div-image">
+                        {% if prof.img %}
+                            <img src="{% get_media_prefix %}{{ prof.img }}" alt="Profile Image">
+                        {% else %}
+                            <img src="{% static 'lms/images/user.png'%}" alt="Profile Image">
+                        {% endif %}
+                    </div>
+                    <div class="div-image">
+                        {% if form %}
+                        <div class="edit-form">
+                            {{ form.image }}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="profile-data">
+                    <div class="profile">
+                        <h2>Biography</h2>
+
+                        {% if prof.biography == "" %}
+                        <div class="def-profile">
+                            <b>{{user.last_name}}, {{user.first_name}}</b> has not added a biography
+                        </div>
+                        {% else %}
+                        <div class="def-profile">
+                            {{ prof.biography }}
+                        </div>
+                        {% endif %}
+
+
+                        {% if form %}
+                            <div class="edit-form">
+                                {{ form.biography }}
+                                <textarea hidden id="hidden_bio">{{ prof.biography }}</textarea>
+
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="profile">
+                        <h2>Contact Details</h2>
+                        {% if prof.contacts == "" %}
+                        <div class="def-profile">
+                            <b>{{user.last_name}}, {{user.first_name}}</b> has not added contacts yet
+                        </div>
+                        {% else %}
+                        <div class="def-profile">
+                            {{ prof.contacts }}
+                        </div>
+                        {% endif %}
+
+                        {% if form %}
+                            <div class="edit-form">
+                                {{ form.contacts }}
+                                <textarea hidden id="hidden_contacts">{{ prof.contacts }}</textarea>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <hr id="hr-form">
+        <div class="profile-button" id="pr-btn">
+                <button type="button" id="edit_btn" class="def-profile" onclick="editProfile()"><i class="fa fa-regular fa-pen-to-square"></i> Edit Profile </button>
+                <button type="button" id="cancel" class="edit-form" onclick="discardModal()">Discard</button>
+                <button type="submit"  class="edit-form"><i class="fa fa-regular fa-floppy-disk"></i>  Save</button>
+        </div>
+        </form>
+    </section>
+
+{% endblock %}
+{% block js %}
+        <script src="{% static 'lms/js/profile.js' %}"></script>
+{% endblock %}
+

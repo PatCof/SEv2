@@ -1,0 +1,75 @@
+{% extends 'lms/lms_base.html' %}
+{% load static %}
+    {% block css %}
+        {{ form.media }}
+    <link rel="stylesheet" href="{% static 'lms/css/dashboard.css' %}">
+    {% endblock %}
+
+{% block content %}
+<section class="content">
+    <div class="header-container">
+        <h1 class="db">{{ course_name }}</h1>
+        <h1 class="wl">Wi-Learn</h1>
+    </div>
+</section>
+
+    <div id="CancelModal">
+        <div class="Cancelpopup">
+            <div class="Cancelheader">
+                DISCARD UPDATES?
+            </div>
+            <div class="Cancelcontent">
+                <p class="cancel-text">Are you sure you want to discard changes?</p>
+                <div class="cancel-group">
+                    <button class="yes_btn" onclick="cancelCourse()">Discard</button>
+                    <button class="can_btn" id="can_btn" onclick="cancelCancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<section class="dashboard-content">
+    <form id="dashboard-form" method="post">
+        {% csrf_token %}
+        <button type="button" id="edit-button" class="edit-button" onclick="editModule()">Edit</button>
+        <div class="title">
+            <h1 id="module-title">{{ assign.assign_title }}</h1>
+        </div>
+        <div class="mod_content" id="mod_content" style="display: block;">
+            {{ assign.assign_content.html | safe }}
+        </div>
+        <div class="form-group" id="mod_form" style="display: none;">
+            <div class="in_div">
+                {{ form.assign_title.label_tag }}
+                {{ form.assign_title }}
+            </div>
+            <div class="in_div">
+                {{ form.assign_content.label_tag }}
+                {{ form.assign_content }}
+            </div>
+        </div>
+
+        <div class="button-containers" id="edit-options" style="display: none;">
+            <button type="button" class="cancel-button" onclick="discardCourse()">Cancel</button>
+            <button class="publish-button">Publish</button>
+        </div>
+       <div class="a">
+           {% if prev_assign %}
+                <a class="previous-page-button" href="{% url 'lms:edit_assign' id=id assign_num=prev_assign.assign_num  %}">Previous Page</a>
+            {% endif %}
+
+           {% if next_assign %}
+            <a class="next-page-button" href="{% url 'lms:edit_assign' id=id assign_num=next_assign.assign_num %}">Next Section</a>
+           {% endif %}
+    </div>
+    </form>
+
+    </div>
+</section>
+
+{% endblock %}
+    {% block js %}
+        <script src="{% static 'lms/js/dashboard.js' %}">
+    {% endblock %}

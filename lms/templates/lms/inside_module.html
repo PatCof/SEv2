@@ -1,0 +1,143 @@
+{% extends 'lms/lms_base.html' %}
+{% load static %}
+    {% block css %}
+        {{ form.media }}
+    <link rel="stylesheet" href="{% static 'lms/css/insidemodule.css' %}">
+    {% endblock %}
+
+{% block content %}
+<!-- Section Content -->
+<section class="content">
+    <div class="header-container">
+        <h1 class="db">DASHBOARD</h1>
+        {% if user.is_authenticated %}
+            <h2>{{user.username}}</h2>
+        {% endif %}
+        <h1 class="wl">Wi-Learn</h1>
+    </div>
+</section>
+
+<section class="dashboard-content">
+    <div class="button-container">
+        <div class="course-buttons">
+            <button id="modulesButton" onclick="toggleDisplay('modules')">
+                Modules
+            </button>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <div id="modulesSection" class="section-container">
+        <button class="collapsible" onclick="toggleCollapsible(1)">Module 1</button>
+        <div class="contents">
+            {% if mod1 %}
+                {% for m in mod1 %}
+                    <div class="lessoncontent">
+                        <a href="{% url 'lms:modify_module' id=id mod_num=1 mod_page=m.module_page%}">Module 1 - {{ m.module_title }}</a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <div class="lessoncontent">
+                <a class="addModuleButton" title="Add Course" href="{% url 'lms:create_module' id=id mod_num=1 %}" >+</a>
+                </div>
+        </div>
+
+        <button class="collapsible" onclick="toggleCollapsible(2)">Module 2</button>
+        <div class="contents">
+            {% if mod2 %}
+                {% for m in mod2 %}
+                    <div class="lessoncontent">
+                        <a href="{% url 'lms:modify_module' id=id mod_num=2 mod_page=m.module_page%}">Module 2 - {{ m.module_title }}</a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <div class="lessoncontent">
+                <a class="addModuleButton" title="Add Course" href="{% url 'lms:create_module' id=id mod_num=2%}" >+</a>
+                </div>
+        </div>
+
+        <button class="collapsible" onclick="toggleCollapsible(3)">Module 3</button>
+        <div class="contents">
+            {% if mod3 %}
+                {% for m in mod3 %}
+                    <div class="lessoncontent">
+                        <a href="{% url 'lms:modify_module' id=id mod_num=3 mod_page=m.module_page%}">Module 3 - {{ m.module_title }}</a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <div class="lessoncontent">
+                <a class="addModuleButton" title="Add Course" href="{% url 'lms:create_module' id=id mod_num=3%}" >+</a>
+                </div>
+        </div>
+
+        <button class="collapsible" onclick="toggleCollapsible(4)">Module 4</button>
+        <div class="contents">
+            {% if mod4 %}
+                {% for m in mod4 %}
+                    <div class="lessoncontent">
+                        <a href="{% url 'lms:modify_module' id=id mod_num=4 mod_page=m.module_page%}">Module 4 - {{ m.module_title }}</a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <div class="lessoncontent">
+                <a class="addModuleButton" title="Add Course" href="{% url 'lms:create_module' id=id mod_num=4%}" >+</a>
+                </div>
+        </div>
+        <button class="collapsible" onclick="toggleCollapsible(5)">Module 5</button>
+        <div class="contents">
+            {% if mod5 %}
+                {% for m in mod5 %}
+                    <div class="lessoncontent">
+                        <a href="{% url 'lms:modify_module' id=id mod_num=5 mod_page=m.module_page%}">Module 5 - {{ m.module_title }}</a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <div class="lessoncontent">
+                <a class="addModuleButton" title="Add Course" href="{% url 'lms:create_module' id=id mod_num=5%}" >+</a>
+                </div>
+        </div>
+
+        <button class="collapsible" onclick="toggleCollapsible(6)">Module 6</button>
+        <div class="contents">
+            {% if mod6 %}
+                {% for m in mod6 %}
+                    <div class="lessoncontent">
+                        <a href="{% url 'lms:modify_module' id=id mod_num=6 mod_page=m.module_page%}">Module 6 - {{ m.module_title }}</a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <div class="lessoncontent">
+                <a class="addModuleButton" title="Add Course" href="{% url 'lms:create_module' id=id mod_num=6%}" >+</a>
+                </div>
+        </div>
+
+        <hr>
+
+        <h1>Assignments</h1>
+        <button class="collapsible" onclick="toggleCollapsible(7)">Assignments</button>
+        <div class="contents">
+                {% if assign %}
+                {% for a in assign %}
+                    <div class="lessoncontent">
+                        <a href="{% url 'lms:edit_assign' id=id assign_num=a.assign_num %}">Assignment# {{ a.assign_num}} - {{ a.assign_title }}</a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <div class="lessoncontent">
+                <a class="addModuleButton" title="Add Assignment" href="{% url 'lms:create_assign' id=id %}" >+</a>
+                </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+    {% block js %}
+        <script src="{% static 'lms/js/insidemodule.js' %}"></script>
+    {% endblock %}
