@@ -1,5 +1,5 @@
 from django.urls import path , include
-from .consumers import ChatConsumer
+from lms.consumers import ChatConsumer
 
 # Here, "" is routing to the URL ChatConsumer which 
 # will handle the chat functionality.

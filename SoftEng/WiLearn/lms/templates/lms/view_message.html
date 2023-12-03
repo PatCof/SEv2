@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ message.subject }}</h1>
+  <p>From: {{ message.sender.username }}</p>
+  <p>To: {{ message.receiver.username }}</p>
+  <p>Date: {{ message.date_sent }}</p>
+  <p>Attachments: {% if message.attachment %}<a href="{{ message.attachment.url }}" target="_blank">Download</a>{% else %}None{% endif %}</p>
+  <p>{{ message.body }}</p>
+{% endblock %}

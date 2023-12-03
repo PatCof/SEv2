@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne' ,
+    'channels',
     'login',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,6 +43,8 @@ INSTALLED_APPS = [
     'lms',
     'django_quill',
 ]
+
+ASGI_APPLICATION = 'WiLearn.asgi.application'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -155,5 +159,11 @@ QUILL_CONFIGS = {
             ]
         },
         'placeholder': 'Compose the contents...',
+    }
+}
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
     }
 }
