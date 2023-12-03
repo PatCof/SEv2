@@ -134,7 +134,13 @@ h1.wl {
     margin: 0; /* Remove any default margin */
 }
 
+h2.introduceh2 {
+    margin-left: 90px;
+  }
 
+ #introduce {
+    margin-left: 100px;
+ }
 
 
 
@@ -227,3 +233,10 @@ h1.wl {
     margin-left: 15%;
     
   }
+
+  #id_chat_item_container{
+    margin-left: 70px;
+
+  }
+
+  

@@ -32,13 +32,6 @@
                 <span>Dashboard</span>
             </a>
         </li>
-<!--        <li>-->
-<!--            <a href="#">-->
-<!--                <i class="fa fa-book"></i>-->
-<!--                <span>Courses</span>-->
-<!--            </a>-->
-<!--        </li>-->
-
         <li>
             <a href="{% url 'lms:inbox' %}">
                 <i class="fa fa-inbox"></i>
@@ -56,94 +49,57 @@
 
 <section class="content">
     <div class="header-container">
-        <h1 class="db">DASHBOARD</h1>
+        <h1 class="db">INBOX</h1>
         <h1 class="wl">Wi-Learn</h1>
     </div>
 </section>
 
-<section class="mail-content">
-    <div class="mail-course-container">
-        <div class="dropdown">
-            <input onclick="mailCourseFunction()" type="text" placeholder="Course Search.." id="myInput" onkeyup="filterMailCourseFunction()">
-              <div onclick="mailCourseFunction()" id="myDropdown" class="dropdown-content">
-              <a href="#about">About</a>
-              <a href="#base">Base</a>
-              <a href="#blog">Blog</a>
-              <a href="#contact">Contact</a>
-              <a href="#custom">Custom</a>
-              <a href="#support">Support</a>
-              <a href="#tools">Tools</a>
-            </div>
-          </div> 
-    </div>
 
-    <div class="mail-inbox-container">
-        <div class="dropdown2">
-            <input onclick="myFunction2()" type="text" placeholder="Inbox Search.." id="myInput2" onkeyup="filterFunction2()">
-              <div onclick="myFunction2()" id="myDropdown2" class="dropdown-content">
-              <a href="#about">About</a>
-              <a href="#base">Base</a>
-              <a href="#contact">Contact</a>
-              <a href="#custom">Custom</a>
-              <a href="#support">Support</a>
-              <a href="#tools">Tools</a>
-            </div>
-          </div> 
-    </div>
-</section>
+<div style="margin-left:80px; margin-top:0px"><h2>Hello, {{user.username}}! Feel Free to Message</h2></div>
+    <div
+      class="chat__item__container"
+      id="id_chat_item_container"
+      style="font-size: 20px; margin-left: 80px"
+    >
 
-<aside class="message-content">
-    <article class="message-content-wrapper">
-        <div class="message-item">
-            <h2> Date</h2>
-            <h1> Name</h1>
-            <p> Lorem Ipsum</p>
-        </div>
-    </article>
-    <article class="message-content-wrapper">
-        <div class="message-item">
-            <h2> Date</h2>
-            <h1> Name</h1>
-            <p> Lorem Ipsum</p>
-        </div>
-    </article>
-    <article class="message-content-wrapper">
-        <div class="message-item">
-            <h2> Date</h2>
-            <h1> Name</h1>
-            <p> Lorem Ipsum</p>
-        </div>
-    </article>
-    <article class="message-content-wrapper">
-        <div class="message-item">
-            <h2> Date</h2>
-            <h1> Name</h1>
-            <p> Lorem Ipsum</p>
-        </div>
-    </article>
-    <article class="message-content-wrapper">
-        <div class="message-item">
-            <h2> Date</h2>
-            <h1> Name</h1>
-            <p> Lorem Ipsum</p>
-        </div>
-    </article>
-    <article class="message-content-wrapper">
-        <div class="message-item">
-            <h2> Date</h2>
-            <h1> Name</h1>
-            <p> Lorem Ipsum</p>
-        </div>
-    </article>
-    <article class="message-content-wrapper">
-        <div class="message-item">
-            <h2> Date</h2>
-            <h1> Name</h1>
-            <p> Lorem Ipsum</p>
-        </div>
-    </article>
-</aside>
-</body>
+      <br />
+      <input type="text" id="id_message_send_input" />
+      <button type="submit" id="id_message_send_button">Send Message</button>
+      <br /><br />
+
+      <hr>
+    </div>
+<br />
+
+    <script>
+      const chatSocket = new WebSocket("ws://" + window.location.host + "/");
+      chatSocket.onopen = function (e) {
+        console.log("The connection was setup successfully !");
+      };
+      chatSocket.onclose = function (e) {
+        console.log("Something unexpected happened !");
+      };
+      document.querySelector("#id_message_send_input").focus();
+      document.querySelector("#id_message_send_input").onkeyup = function (e) {
+        if (e.keyCode == 13) {
+          document.querySelector("#id_message_send_button").click();
+        }
+      };
+      document.querySelector("#id_message_send_button").onclick = function (e) {
+        var messageInput = document.querySelector(
+          "#id_message_send_input"
+        ).value;
+        chatSocket.send(JSON.stringify({ message: messageInput, username : "{{request.user.username}}"}));
+      };
+      chatSocket.onmessage = function (e) {
+        const data = JSON.parse(e.data);
+        var div = document.createElement("div");
+        div.innerHTML = data.username + " : " + data.message;
+        document.querySelector("#id_message_send_input").value = "";
+        document.querySelector("#id_chat_item_container").appendChild(div);
+      };
+    </script>
 
 <script src="{% static 'lms/js/inbox.js' %}"></script>
+</body>
 </html>

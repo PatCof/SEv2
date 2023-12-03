@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import AnnouncementForm, CourseForm, ProfileForm, ModuleForm, EditModule, AssignmentForm
+from .forms import AnnouncementForm, CourseForm, ProfileForm, ModuleForm,AssignmentForm
 from .models import Announcements, Courses, Profile, Module, Assignments
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
@@ -32,17 +32,20 @@ def dashboard(request):
             Courses.objects.filter(id=c_id).delete()
 
     context = {
-                'course': course,
-               'announcement': announcement,
-               'date': current_date,
-               }
+            'course': course,
+            'announcement': announcement,
+            'date': current_date,
+            }
 
     return render(request, 'lms/dashboard.html', context=context)
 
 
 @login_required
-def inbox(request):
-    return render(request, 'lms/inbox.html')
+def inbox(request, *args, **kwargs):
+    if not request.user.is_authenticated:
+        return redirect("login-user")
+    context = {}
+    return render(request, "lms/inbox.html", context)
 
 
 @login_required
@@ -317,8 +320,6 @@ def edit_assign(request, id, assign_num):
         'id': id,
     }
     return render(request, 'lms/edit_assignment.html', context=context)
-
-
 
 
 @login_required
