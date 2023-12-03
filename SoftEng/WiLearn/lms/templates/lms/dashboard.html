@@ -12,7 +12,6 @@
     <div class="header-container">
         <h1 class="db">DASHBOARD</h1>
         {% if user.is_authenticated %}
-            <h1>{{user.username}}</h1>
         {% endif %}
         <h1 class="wl">Wi-Learn</h1>
     </div>
@@ -110,7 +109,7 @@
                         <p class="course-lab">Lab Schedule: {{ c.lab_day }}: {{ c.lab_time }}</p>
                     </a>
 
-                <div>
+                <div class="mt">
                     <a href="{% url 'lms:edit_course' id=c.id %}" class="editbtn1">
                         <div class="div_btn">
                             <i class="fa fa-regular fa-pen-to-square"></i>  Edit
@@ -172,7 +171,7 @@
                     <div class="edit-div">
                         <div class="inner-edit">
                         <a href="{% url 'lms:edit_announcements' a_id=a.id %}" class="editbtn">
-                            <div class="div_btn">
+                            <div>
                             <i class="fa fa-regular fa-pen-to-square"></i>  Edit
                             </div>
                         </a>

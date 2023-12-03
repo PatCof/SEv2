@@ -153,7 +153,7 @@ button {
 /* Style each course card */
 .course {
     width: 300px;
-    height: 400px;
+    height: 525px;
     margin-right: 20px; /* Add space between courses */
     padding: 10px;
     border: 1px solid #ccc;
@@ -354,6 +354,10 @@ select {
     color: black;
 }
 
+.course-link p{
+margin: 10px 0;
+}
+
 .edit-button {
     background-color: #ccc;
     color: #fff;
@@ -427,11 +431,31 @@ select {
     color: white; /* Button text color */
 }
 
+/* Styling for the button */
 .div_btn {
-    display: flex;
-    align-items: center;
-    gap: 5px; /* Gap between icon and text */
-}
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #DDE5F7;
+    color: black;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px 0;
+  }
+  
+  /* Styling for the button on hover */
+  .div_btn:hover {
+    background-color: #4447a1;
+    color: white;
+  }
+  
+  /* Styling for the icon inside the button */
+  .div_btn i {
+    margin-right: 8px; /* Adjust the icon's margin as needed */
+  }
+  
 
 
 .a-header{
@@ -458,6 +482,7 @@ select {
     background-color: #4444;
     /* Add any other styles like box-shadow, colors, etc. */
     font-size: 12px;
+    margin: 10px 0 10px 0;
 }
 
 
